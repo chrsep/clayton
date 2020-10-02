@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "automerge": true,
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "eslint"
+      ],
+      "groupName": "eslint"
+    },
+    {
+      "packagePatterns": [
+        "@storybook"
+      ],
+      "groupName": "storybook"
+    }
+  ]
+}
