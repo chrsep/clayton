@@ -8,9 +8,15 @@ import React, {
 import Head from "next/head"
 import { Svg } from "react-optimized-image"
 import SearchIcon from "../../icons/search.svg"
+import useSearchTrack from "../../hooks/useSearchTrack"
 
 const App: FC = () => {
   const [search, setSearch] = useState("")
+
+  const searchResult = useSearchTrack(search)
+
+  console.log(searchResult.data)
+
   return (
     <div>
       <Head>
@@ -39,7 +45,7 @@ const App: FC = () => {
           Welcome, John
         </h1>
       ) : (
-        <div>Searching</div>
+        <div>searching</div>
       )}
     </div>
   )

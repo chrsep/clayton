@@ -5,16 +5,14 @@ import { createSession } from "../../../redis"
 import { setSessionCookie } from "../../../auth"
 
 const callback = newHandler(async (req, res) => {
-  const {
-    query: { code, state },
-  } = req
+  const { code } = req.query
 
-  if (!code || !state) {
+  if (!code) {
     res.status(401).end()
     return
   }
 
-  if (Array.isArray(code) || Array.isArray(state)) {
+  if (Array.isArray(code)) {
     res.status(400).end()
     return
   }
@@ -33,6 +31,7 @@ const callback = newHandler(async (req, res) => {
     setSessionCookie(res, session)
     res.redirect("/app").end()
   } catch (e) {
+    console.log(e)
     res.status(401).end()
   }
 })

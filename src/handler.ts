@@ -1,4 +1,4 @@
-import { NextApiHandler } from "next"
+import { NextApiHandler, NextApiRequest } from "next"
 import * as Sentry from "@sentry/node"
 
 Sentry.init({
@@ -16,4 +16,13 @@ export const newHandler = (handler: NextApiHandler): NextApiHandler => async (
     console.error(e)
     Sentry.captureException(e)
   }
+}
+
+export const getQueryString = (req: NextApiRequest, key: string) => {
+  const result = req.query[key]
+
+  if (Array.isArray(result)) {
+    return result[0]
+  }
+  return result
 }
