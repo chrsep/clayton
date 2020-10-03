@@ -1,8 +1,8 @@
-import { setCookie } from "nookies"
 import { v4 as uuidv4 } from "uuid"
 import { newHandler } from "../../../handler"
 import { requestTokens } from "../../../spotify"
 import { createSession } from "../../../redis"
+import { setSessionCookie } from "../../../auth"
 
 const callback = newHandler(async (req, res) => {
   const {
@@ -30,14 +30,7 @@ const callback = newHandler(async (req, res) => {
       tokens.expires_in
     )
 
-    setCookie({ res }, "token", session, {
-      maxAge: 30 * 24 * 60 * 60,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: true,
-      httpOnly: true,
-      path: "/",
-      domain: process.env.SITE_URL,
-    })
+    setSessionCookie(res, session)
     res.redirect("/").end()
   } catch (e) {
     res.status(401).end()
