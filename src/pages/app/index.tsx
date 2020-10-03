@@ -18,7 +18,7 @@ const App: FC = () => {
   console.log(searchResult.data)
 
   return (
-    <div>
+    <div className="pt-20">
       <Head>
         <title>Clayton Prototype</title>
         <link rel="icon" href="/favicon.ico" />
@@ -36,7 +36,7 @@ const App: FC = () => {
         />
       </Head>
 
-      <div className="flex items-center p-3 max-w-6xl mx-auto">
+      <div className="flex items-center p-3 max-w-6xl mx-auto fixed top-0 left-0 right-0">
         <Searchbar value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
 
@@ -59,7 +59,7 @@ const Searchbar: FC<DetailedHTMLProps<
     htmlFor="searchbar"
     className={`flex items-center rounded-full px-3 py-2 bg-gray-400 text-black ${
       value ? "w-full" : "w-32"
-    } ml-auto focus-within:w-full`}
+    } ml-auto focus-within:w-full transition-width duration-200`}
   >
     <Svg src={SearchIcon} className="w-6 h-6 flex-shrink-0" />
     <input
