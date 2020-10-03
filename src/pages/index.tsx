@@ -27,7 +27,7 @@ const Home: FC = () => (
     <Header />
 
     <h1 className="px-6 leading-tight text-center text-4xl my-12 font-bold md:text-6xl max-w-lg mx-auto">
-      Learn Songs You Love, faster
+      Learn Songs You Love, Faster
     </h1>
 
     <a href="https://github.com/chrsep/clayton">
