@@ -5,7 +5,7 @@ services:
     image: redis:6
     container_name: clayton-redis
     ports:
-      - 6379
+      - 6379:6379
     volumes:
       - clayton-redis:/data
 
