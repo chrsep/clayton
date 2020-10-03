@@ -3,6 +3,7 @@ import React, { FC } from "react"
 import { Svg } from "react-optimized-image"
 import GithubIcon from "../icons/github.svg"
 import ChevronRight from "../icons/chevron_right.svg"
+import Header from "../components/Header/Header"
 
 const Home: FC = () => {
   return (
@@ -12,7 +13,9 @@ const Home: FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="px-3 leading-tight text-center text-4xl my-12 font-bold md:text-6xl max-w-lg mx-auto">
+      <Header />
+
+      <h1 className="px-6 leading-tight text-center text-4xl my-12 font-bold md:text-6xl max-w-lg mx-auto">
         Learn Songs You Love, faster
       </h1>
 
@@ -20,7 +23,7 @@ const Home: FC = () => {
         <div className="p-3 rounded bg-gray-300 m-3 text-black max-w-2xl md:mx-auto mt-20">
           <div className="flex items-center font-bold">
             <Svg src={GithubIcon} className="w-5 h-5" />
-            <h2 className="ml-3 text-lg">We are Open Source!</h2>
+            <h2 className="ml-3">We are Open Source!</h2>
             <Svg src={ChevronRight} className="w-8 h-8 ml-auto" />
           </div>
         </div>
