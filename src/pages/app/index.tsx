@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, {
   DetailedHTMLProps,
   FC,
@@ -15,6 +16,17 @@ const App: FC = () => {
       <Head>
         <title>Clayton Prototype</title>
         <link rel="icon" href="/favicon.ico" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            const cookies = document.cookie.split(";")
+            const isLoggedIn = cookies.findIndex((item) => item === "loggedIn=1")
+            if (isLoggedIn === -1) {
+              window.location.href  = "/api/auth/login"
+            }    
+        `,
+          }}
+        />
       </Head>
 
       <div className="p-3">
