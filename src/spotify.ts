@@ -1,6 +1,18 @@
-const { SPOTIFY_CLIENT_ID, SPOTIFY_AUTH_REDIRECT_URI } = process.env
+import SpotifyWebApi from "spotify-web-api-node"
 
-export const generateAuthorizationUrl = (scopes: string) => {
+const {
+  SPOTIFY_CLIENT_ID,
+  SPOTIFY_CLIENT_SECRET,
+  SPOTIFY_AUTH_REDIRECT_URI,
+} = process.env
+
+const spotifyApi = new SpotifyWebApi({
+  clientId: SPOTIFY_CLIENT_ID,
+  clientSecret: SPOTIFY_CLIENT_SECRET,
+  redirectUri: SPOTIFY_AUTH_REDIRECT_URI,
+})
+
+export const generateAuthorizationUrl = (scopes: string[]) => {
   if (!SPOTIFY_AUTH_REDIRECT_URI) {
     throw new Error(
       "Invalid SPOTIFY_AUTH_REDIRECT_URI, please check your env variables"
@@ -11,7 +23,5 @@ export const generateAuthorizationUrl = (scopes: string) => {
     )
   }
 
-  const redirectUri = encodeURIComponent(SPOTIFY_AUTH_REDIRECT_URI)
-  const encodedScopes = encodeURIComponent(scopes)
-  return `https://accounts.spotify.com/authorize?response_type=code&client_id=${SPOTIFY_CLIENT_ID}&scope=${encodedScopes}&redirect_uri=${redirectUri}`
+  return spotifyApi.createAuthorizeURL(scopes, "test")
 }
