@@ -32,8 +32,11 @@ const callback = newHandler(async (req, res) => {
 
     setCookie({ res }, "token", session, {
       maxAge: 30 * 24 * 60 * 60,
+      secure: process.env.NODE_ENV === "production",
       sameSite: true,
       httpOnly: true,
+      path: "/",
+      domain: process.env.SITE_URL,
     })
     res.redirect("/").end()
   } catch (e) {
