@@ -37,8 +37,6 @@ module.exports = {
     "import/extensions": "off",
     "import/prefer-default-export": 0,
     "react/jsx-fragments": "off",
-    // not required anymore on next and react 17
-    "react/react-in-jsx-scope": "off"
   },
   globals: {
     document: true,

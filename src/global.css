@@ -2,4 +2,8 @@
 
 @tailwind components;
 
+body {
+    @apply bg-black text-white;
+}
+
 @tailwind utilities;
