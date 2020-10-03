@@ -1,11 +1,21 @@
 import Head from "next/head"
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import { Svg } from "react-optimized-image"
+import { useRouter } from "next/router"
 import GithubIcon from "../icons/github.svg"
 import ChevronRight from "../icons/chevron_right.svg"
 import Header from "../components/Header/Header"
 
 const Home: FC = () => {
+  const router = useRouter()
+  useEffect(() => {
+    const cookies = document.cookie.split(";")
+    const isLoggedIn = cookies.findIndex((item) => item === "loggedIn=1")
+    if (isLoggedIn > -1) {
+      router.push("/app")
+    }
+  }, [])
+
   return (
     <div>
       <Head>
