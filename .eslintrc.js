@@ -1,14 +1,14 @@
 module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: "./tsconfig.json",
+    project: "./tsconfig.json"
   },
   extends: [
     "airbnb-typescript",
     "plugin:import/typescript",
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint",
-    "prettier/react",
+    "prettier/react"
   ],
   plugins: ["react-hooks"],
   rules: {
@@ -19,7 +19,7 @@ module.exports = {
     // Recommended for immer.
     "no-param-reassign": [
       "error",
-      { props: true, ignorePropertyModificationsFor: ["draft"] },
+      { props: true, ignorePropertyModificationsFor: ["draft"] }
     ],
     "import/no-extraneous-dependencies": [
       "error",
@@ -29,20 +29,23 @@ module.exports = {
           "webpack.config.js",
           "**/*stories.tsx",
           "**/*.spec.js",
-          "**/*.spec.ts",
-        ],
-      },
+          "**/*.spec.ts"
+        ]
+      }
     ],
     "import/no-named-as-default": "off",
     "import/extensions": "off",
     "import/prefer-default-export": 0,
     "react/jsx-fragments": "off",
     // not required anymore on next and react 17
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    // disable no-use-before-define between react components
+    "no-use-before-define": [0],
+    "@typescript-eslint/no-use-before-define": ["error", { "variables": false }]
   },
   globals: {
     document: true,
-    window: true,
+    window: true
   },
   ignorePatterns: [".eslintrc.js"]
 }

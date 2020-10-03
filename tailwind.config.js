@@ -10,6 +10,8 @@ module.exports = {
   theme: {
     extend: {},
   },
-  variants: {},
+  variants: {
+    width: ["responsive", "hover", "focus", "focus-within"],
+  },
   plugins: [],
 }

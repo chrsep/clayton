@@ -31,7 +31,7 @@ const callback = newHandler(async (req, res) => {
     )
 
     setSessionCookie(res, session)
-    res.redirect("/").end()
+    res.redirect("/app").end()
   } catch (e) {
     res.status(401).end()
   }
