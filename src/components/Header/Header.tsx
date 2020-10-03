@@ -11,7 +11,7 @@ const Header: FC<HeaderProps> = () => (
     <a className="ml-auto inline-block" href="/api/auth/login">
       <Button>
         <Svg src={SpotifyIcon} className="w-6 h-6 color-white" />
-        <span className="px-3">LOG IN</span>
+        <span className="px-3">Log In</span>
       </Button>
     </a>
   </nav>

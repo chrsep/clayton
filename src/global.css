@@ -7,7 +7,7 @@ body {
 }
 
 button {
-    @apply bg-indigo-600 px-3 py-2 rounded-full tracking-wide font-bold flex;
+    @apply bg-indigo-600 px-3 py-2 rounded-full tracking-wide font-bold flex border border-indigo-500;
 }
 
 @tailwind utilities;
