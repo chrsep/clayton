@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@prefresh/next": "1.2.4",
+    "@types/redis": "^2.8.27",
     "next": "9.5.3",
     "next-compose-plugins": "2.2.0",
     "next-optimized-images": "3.0.0-canary.10",
@@ -26,6 +27,7 @@
     "react-dom": "github:preact-compat/react-dom#1.0.0",
     "react-refresh": "0.8.3",
     "react-ssr-prepass": "npm:preact-ssr-prepass@1.1.1",
+    "redis": "^3.0.2",
     "tailwindcss": "1.8.10"
   },
   "devDependencies": {
