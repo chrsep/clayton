@@ -14,7 +14,7 @@ const Home: FC = () => (
       <script
         dangerouslySetInnerHTML={{
           __html: `
-            const cookies = document.cookie.split(";")
+            const cookies = document.cookie.replace(" ", "").split(";")
             const isLoggedIn = cookies.findIndex((item) => item === "loggedIn=1")
             if (isLoggedIn > -1) {
               window.location.href  = "/app"

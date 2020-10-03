@@ -19,9 +19,10 @@ const App: FC = () => {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-            const cookies = document.cookie.split(";")
+            const cookies = document.cookie.replace(" ", "").split(";")
             const isLoggedIn = cookies.findIndex((item) => item === "loggedIn=1")
-            if (isLoggedIn === -1) {
+            console.log(cookies)
+            if (isLoggedIn < 0) {
               window.location.href  = "/api/auth/login"
             }    
         `,
@@ -29,7 +30,7 @@ const App: FC = () => {
         />
       </Head>
 
-      <div className="p-3">
+      <div className="flex items-center p-3 max-w-6xl mx-auto">
         <Searchbar value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
 
@@ -57,7 +58,7 @@ const Searchbar: FC<DetailedHTMLProps<
     <Svg src={SearchIcon} className="w-6 h-6 flex-shrink-0" />
     <input
       id="searchbar"
-      className="placeholder-gray-700 bg-transparent flex-shrink w-full ml-2"
+      className="placeholder-gray-700 bg-transparent flex-shrink w-full pl-2 focus:outline-none"
       placeholder="Search"
       value={value}
       {...props}
