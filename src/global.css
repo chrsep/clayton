@@ -6,4 +6,8 @@ body {
     @apply bg-black text-white;
 }
 
+button {
+    @apply bg-blue-700 px-6 py-2 rounded-full tracking-wide font-bold;
+}
+
 @tailwind utilities;
