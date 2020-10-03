@@ -5,13 +5,14 @@ Sentry.init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 })
 
-export const newHandler = (handler: NextApiHandler): NextApiHandler => (
-  res,
-  req
+export const newHandler = (handler: NextApiHandler): NextApiHandler => async (
+  req,
+  res
 ) => {
   try {
-    handler(res, req)
+    await handler(req, res)
   } catch (e) {
+    res.status(500).end()
     console.error(e)
     Sentry.captureException(e)
   }

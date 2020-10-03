@@ -6,7 +6,7 @@ const {
   SPOTIFY_AUTH_REDIRECT_URI,
 } = process.env
 
-const spotifyApi = new SpotifyWebApi({
+const api = new SpotifyWebApi({
   clientId: SPOTIFY_CLIENT_ID,
   clientSecret: SPOTIFY_CLIENT_SECRET,
   redirectUri: SPOTIFY_AUTH_REDIRECT_URI,
@@ -23,5 +23,10 @@ export const generateAuthorizationUrl = (scopes: string[]) => {
     )
   }
 
-  return spotifyApi.createAuthorizeURL(scopes, "test")
+  return api.createAuthorizeURL(scopes, "test")
+}
+
+export const requestTokens = async (code: string) => {
+  const response = await api.authorizationCodeGrant(code)
+  return response.body
 }
