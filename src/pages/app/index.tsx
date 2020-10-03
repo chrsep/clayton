@@ -57,7 +57,7 @@ const Searchbar: FC<DetailedHTMLProps<
 >> = ({ value, ...props }) => (
   <label
     htmlFor="searchbar"
-    className={`flex items-center rounded-full px-3 py-2 bg-gray-400 text-black ${
+    className={`flex items-center rounded-full px-3 py-2 bg-white text-black ${
       value ? "w-full" : "w-32"
     } ml-auto focus-within:w-full transition-width duration-200`}
   >
