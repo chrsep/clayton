@@ -1,5 +1,5 @@
 import { NextApiResponse } from "next"
-import { getQueryString, newProtectedSpotifyHandler } from "../../../handler"
+import { getQueryString, newProtectedHandler } from "../../../handler"
 import {
   searchTracks,
   SpotifyApiSearchTrackResponse,
@@ -7,14 +7,14 @@ import {
 
 export interface SearchTracksResponse extends SpotifyApiSearchTrackResponse {}
 
-const search = newProtectedSpotifyHandler(
-  async (req, res: NextApiResponse<SearchTracksResponse>, accessToken) => {
+const search = newProtectedHandler(
+  async (req, res: NextApiResponse<SearchTracksResponse>, session) => {
     const q = getQueryString(req, "q")
     const type = getQueryString(req, "type")
 
     if (type === "track") {
       try {
-        const response = await searchTracks(accessToken, q)
+        const response = await searchTracks(session, q)
         res.json(response)
       } catch (e) {
         res.status(401).end()

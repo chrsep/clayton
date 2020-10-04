@@ -1,9 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { newHandler } from "../../../handler"
-import { getUserAuthUri } from "../../../spotify/auth"
+import { getUserAuthorizeRequestUri } from "../../../spotify/auth"
 
 const login = newHandler((req, res) => {
-  res.redirect(getUserAuthUri())
+  res.redirect(getUserAuthorizeRequestUri())
 })
 
 export default login

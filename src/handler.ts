@@ -1,7 +1,5 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next"
 import * as Sentry from "@sentry/node"
-import { getSessionToken, updateSessionToken } from "./redis"
-import { requestTokenRefresh } from "./spotify/auth"
 
 Sentry.init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
@@ -20,40 +18,23 @@ export const newHandler = (handler: NextApiHandler): NextApiHandler => async (
   }
 }
 
-export const newProtectedSpotifyHandler = (
+export const newProtectedHandler = (
   handler: (
     req: NextApiRequest,
     res: NextApiResponse,
     accessToken: string
   ) => void
-): NextApiHandler => async (req, res) => {
-  try {
+): NextApiHandler =>
+  newHandler(async (req, res) => {
     const sessionToken = req.cookies.token
-    const accessToken = await getSessionToken(sessionToken)
 
-    if (!accessToken) {
+    if (!sessionToken) {
       res.status(401).end()
       return
     }
 
-    if (parseInt(accessToken.expiresAt, 10) - Date.now() < 50) {
-      const newToken = await requestTokenRefresh(accessToken.refreshToken)
-      const updatedToken = await updateSessionToken(
-        sessionToken,
-        newToken.access_token,
-        newToken.expires_in
-      )
-      accessToken.accessToken = updatedToken.accessToken
-      accessToken.expiresAt = updatedToken.expiresAt
-    }
-
-    await handler(req, res, accessToken.accessToken)
-  } catch (e) {
-    res.status(500).end()
-    Sentry.captureException(e)
-    console.error(e)
-  }
-}
+    await handler(req, res, sessionToken)
+  })
 
 export const getQueryString = (req: NextApiRequest, key: string) => {
   const result = req.query[key]

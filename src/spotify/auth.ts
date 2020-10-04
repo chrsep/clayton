@@ -23,7 +23,7 @@ if (!SPOTIFY_AUTH_REDIRECT_URI) {
 //  Authorization Code flow
 //  token can be used to get user and personalized data
 // =================================================================================
-export const getUserAuthUri = () => {
+export const getUserAuthorizeRequestUri = () => {
   const encodedScopes = encodeURIComponent(SCOPES.join(" "))
   const encodedRedirectUri = encodeURIComponent(SPOTIFY_AUTH_REDIRECT_URI)
   return `${ACCOUNTS_URI}/authorize?response_type=code&client_id=${SPOTIFY_CLIENT_ID}&scope=${encodedScopes}&redirect_uri=${encodedRedirectUri}`
@@ -36,7 +36,7 @@ interface SpotifyAuthGetAccessTokenResponse {
   expires_in: number
   refresh_token: string
 }
-export const requestAccessToken = async (code: string) => {
+export const requestUserAccessToken = async (code: string) => {
   const form = new URLSearchParams()
   form.append("code", code)
   form.append("grant_type", "authorization_code")
@@ -51,7 +51,7 @@ interface SpotifyAuthRefreshTokenResponse {
   scope: string
   expires_in: number
 }
-export const requestTokenRefresh = async (refreshToken: string) => {
+export const requestRefreshUserAccessToken = async (refreshToken: string) => {
   const form = new URLSearchParams()
   form.append("refresh_token", refreshToken)
   form.append("grant_type", "refresh_token")
@@ -66,9 +66,9 @@ export const requestTokenRefresh = async (refreshToken: string) => {
 interface SpotifyAuthClientCredentialsResponse {
   access_token: string
   token_type: "Bearer"
-  expires_int: number
+  expires_in: number
 }
-export const requestClientCredentials = async () => {
+export const requestAppAccessToken = async () => {
   const form = new URLSearchParams()
   form.append("grant_type", "client_credentials")
 

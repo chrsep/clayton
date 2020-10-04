@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid"
 import { newHandler } from "../../../handler"
-import { saveSessionToken } from "../../../redis"
+import { saveUserTokens } from "../../../redis"
 import { setSessionCookie } from "../../../auth"
-import { requestAccessToken } from "../../../spotify/auth"
+import { requestUserAccessToken } from "../../../spotify/auth"
 
 const callback = newHandler(async (req, res) => {
   const { code } = req.query
@@ -18,10 +18,10 @@ const callback = newHandler(async (req, res) => {
   }
 
   try {
-    const tokens = await requestAccessToken(code)
+    const tokens = await requestUserAccessToken(code)
 
     const session = uuidv4()
-    await saveSessionToken(
+    await saveUserTokens(
       session,
       tokens.access_token,
       tokens.refresh_token,

@@ -13,7 +13,7 @@ const hsetAsync = promisify(client.hset).bind(client)
 // =================================================================================
 // User's access token, can be used to get user and personalized data
 // =================================================================================
-export const saveSessionToken = async (
+export const saveUserTokens = async (
   session: string,
   accessToken: string,
   refreshToken: string,
@@ -31,7 +31,7 @@ export const saveSessionToken = async (
 }
 
 // refresh tokens are valid forever, no need to overwrite it
-export const updateSessionToken = async (
+export const updateUserTokens = async (
   session: string,
   accessToken: string,
   expiresIn: number
@@ -47,7 +47,7 @@ export const updateSessionToken = async (
   return { accessToken, expiresAt }
 }
 
-export const getSessionToken = async (session: string) => {
+export const getUserTokens = async (session: string) => {
   const result = await hgetall(session)
   return {
     accessToken: result.access_token,
@@ -63,13 +63,24 @@ export const upsertAppToken = async (
   accessToken: string,
   expiresIn: number
 ) => {
+  const expiresAt = (Date.now() + expiresIn).toString()
   await hsetAsync([
     "client_credentials",
     "access_token",
     accessToken,
     "expires_at",
-    (Date.now() + expiresIn).toString(),
+    expiresAt,
   ])
+  return {
+    accessToken,
+    expiresAt,
+  }
 }
 
-export const getClientCredentials = async () => {}
+export const getAppTokens = async () => {
+  const result = await hgetall("client_credentials")
+  return {
+    accessToken: result.access_token,
+    expiresAt: result.expires_at,
+  }
+}
