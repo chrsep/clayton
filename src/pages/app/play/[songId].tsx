@@ -1,28 +1,31 @@
 import Head from "next/head"
 import React, { FC } from "react"
-import { GetStaticPaths, InferGetStaticPropsType } from "next"
-import { useQueryString } from "../../../hooks/useQueryString"
+import {
+  GetStaticPaths,
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
+} from "next"
+import { getTrack } from "../../../spotify/api"
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({
+  params,
+}: GetStaticPropsContext<{ songId: string }>) => {
+  const tracks = await getTrack(params?.songId ?? "")
+
   return {
-    props: {
-      tracks: "",
-    },
-    revalidate: 1,
+    props: { tracks },
+    revalidate: 3600,
   }
 }
 
-const Play: FC<InferGetStaticPropsType<typeof getStaticProps>> = () => {
-  const songId = useQueryString("songId")
-
-  return (
-    <div>
-      <Head>
-        <title>Clayton Prototype</title>
-        <link rel="icon" href="/favicon.ico" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+const Play: FC<InferGetStaticPropsType<typeof getStaticProps>> = () => (
+  <div>
+    <Head>
+      <title>Clayton Prototype</title>
+      <link rel="icon" href="/favicon.ico" />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
             (function() {
               const cookies = document.cookie.replace(" ", "").split(";")
               const isLoggedIn = cookies.findIndex((item) => item === "loggedIn=1")
@@ -31,13 +34,11 @@ const Play: FC<InferGetStaticPropsType<typeof getStaticProps>> = () => {
               }    
             })()
         `,
-          }}
-        />
-      </Head>
-      {songId}
-    </div>
-  )
-}
+        }}
+      />
+    </Head>
+  </div>
+)
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return { paths: [], fallback: true }

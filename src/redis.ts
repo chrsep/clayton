@@ -49,11 +49,14 @@ export const updateUserTokens = async (
 
 export const getUserTokens = async (session: string) => {
   const result = await hgetall(session)
-  return {
-    accessToken: result.access_token,
-    expiresAt: result.expires_at,
-    refreshToken: result.refresh_token,
-  }
+  if (result)
+    return {
+      accessToken: result.access_token,
+      expiresAt: result.expires_at,
+      refreshToken: result.refresh_token,
+    }
+
+  return undefined
 }
 
 // ===================================================================
@@ -79,8 +82,11 @@ export const upsertAppToken = async (
 
 export const getAppTokens = async () => {
   const result = await hgetall("client_credentials")
-  return {
-    accessToken: result.access_token,
-    expiresAt: result.expires_at,
-  }
+  if (result)
+    return {
+      accessToken: result.access_token,
+      expiresAt: result.expires_at,
+    }
+
+  return undefined
 }

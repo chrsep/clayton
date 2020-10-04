@@ -5,6 +5,9 @@ Sentry.init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 })
 
+/**
+ * Create publicly accessible handler with error tracking and logging..
+ * */
 export const newHandler = (handler: NextApiHandler): NextApiHandler => async (
   req,
   res
@@ -18,6 +21,9 @@ export const newHandler = (handler: NextApiHandler): NextApiHandler => async (
   }
 }
 
+/**
+ * Create new handler that requires authentication checks.
+ * */
 export const newProtectedHandler = (
   handler: (
     req: NextApiRequest,
@@ -36,6 +42,9 @@ export const newProtectedHandler = (
     await handler(req, res, sessionToken)
   })
 
+/**
+ * Get query string data.
+ * */
 export const getQueryString = (req: NextApiRequest, key: string) => {
   const result = req.query[key]
 
