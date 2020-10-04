@@ -8,6 +8,7 @@ import React, {
 } from "react"
 import Head from "next/head"
 import { Svg } from "react-optimized-image"
+import Link from "next/link"
 import SearchIcon from "../../icons/search.svg"
 import useSearchTrack from "../../hooks/useSearchTrack"
 import CrossIcon from "../../icons/cross.svg"
@@ -24,12 +25,13 @@ const App: FC = () => {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-            const cookies = document.cookie.replace(" ", "").split(";")
-            const isLoggedIn = cookies.findIndex((item) => item === "loggedIn=1")
-            console.log(cookies)
-            if (isLoggedIn < 0) {
-              window.location.href  = "/api/auth/login"
-            }    
+            (function() {
+              const cookies = document.cookie.replace(" ", "").split(";")
+              const isLoggedIn = cookies.findIndex((item) => item === "loggedIn=1")
+              if (isLoggedIn < 0) {
+                window.location.href  = "/"
+              }    
+            })()
         `,
           }}
         />
@@ -71,29 +73,27 @@ const SearchMusic: FC<{ query: string }> = ({ query }) => {
         {data?.tracks.items.map(({ id, name, album, artists }, idx) => {
           const albumThumbnail = album.images.find(({ height }) => height < 100)
           return (
-            <a
-              key={id}
-              className="p-4 flex items-center w-full md:w-1/2 hover:bg-white hover:text-black truncate"
-              href="/"
-            >
-              <img
-                alt={`${name} album cover`}
-                src={albumThumbnail?.url}
-                className="w-16 h-16 flex-shrink-0"
-                loading={idx < 10 ? "eager" : "lazy"}
-              />
-              <div className="ml-3">
-                <p className="font-bold">{name}</p>
-                <div className="flex opacity-75">
-                  {artists.map((artist, artistIdx) => (
-                    <>
-                      {artistIdx > 0 && <p className="px-2">•</p>}
-                      <p key={artist.id}>{artist.name}</p>
-                    </>
-                  ))}
+            <Link key={id} href={`/app/play/${id}`}>
+              <a className="p-4 flex items-center w-full md:w-1/2 hover:bg-white hover:text-black truncate">
+                <img
+                  alt={`${name} album cover`}
+                  src={albumThumbnail?.url}
+                  className="w-16 h-16 flex-shrink-0"
+                  loading={idx < 10 ? "eager" : "lazy"}
+                />
+                <div className="ml-3">
+                  <p className="font-bold">{name}</p>
+                  <div className="flex opacity-75">
+                    {artists.map((artist, artistIdx) => (
+                      <>
+                        {artistIdx > 0 && <p className="px-2">•</p>}
+                        <p key={artist.id}>{artist.name}</p>
+                      </>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </a>
+              </a>
+            </Link>
           )
         })}
       </div>

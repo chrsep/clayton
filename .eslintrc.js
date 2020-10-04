@@ -41,7 +41,9 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     // disable no-use-before-define between react components
     "no-use-before-define": [0],
-    "@typescript-eslint/no-use-before-define": ["error", { "variables": false }]
+    "@typescript-eslint/no-use-before-define": ["error", { "variables": false }],
+    // Next js usually needs to use "a" without href
+    "jsx-a11y/anchor-is-valid": 0
   },
   globals: {
     document: true,
