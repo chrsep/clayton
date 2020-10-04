@@ -26,12 +26,12 @@ const Home: FC = () => (
 
     <Header />
 
-    <h1 className="px-6 leading-tight text-center text-4xl my-12 font-bold md:text-6xl max-w-lg mx-auto">
-      Learn Songs You Love, Faster
+    <h1 className="px-6 leading-tight text-center text-4xl my-12 font-bold md:text-6xl max-w-xl mx-auto">
+      Learn Songs You Love, More Easily
     </h1>
 
     <a href="https://github.com/chrsep/clayton">
-      <div className="p-3 rounded bg-gray-300 m-3 text-black max-w-2xl md:mx-auto mt-20">
+      <div className="p-3 rounded bg-gray-300 m-3 text-black max-w-2xl md:mx-auto mt-20 hover:shadow-outline">
         <div className="flex items-center font-bold">
           <Svg src={GithubIcon} className="w-5 h-5" />
           <h2 className="ml-3">We are Open Source!</h2>

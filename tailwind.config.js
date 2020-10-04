@@ -11,7 +11,7 @@ module.exports = {
     extend: {},
   },
   variants: {
-    width: ["responsive", "hover", "focus", "focus-within"],
+    width: ["responsive", "hover", "focus", "focus-within", "group-focus"],
   },
   plugins: [],
 }
