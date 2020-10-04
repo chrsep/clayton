@@ -1,8 +1,15 @@
 import Head from "next/head"
-import React from "react"
+import React, { FC } from "react"
+import { GetStaticPaths, InferGetStaticPropsType } from "next"
 import { useQueryString } from "../../../hooks/useQueryString"
 
-const Play = () => {
+export const getStaticProps = async () => {
+  return {
+    revalidate: 1,
+  }
+}
+
+const Play: FC<InferGetStaticPropsType<typeof getStaticProps>> = () => {
   const songId = useQueryString("songId")
 
   return (
@@ -27,6 +34,10 @@ const Play = () => {
       {songId}
     </div>
   )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return { paths: [], fallback: true }
 }
 
 export default Play
