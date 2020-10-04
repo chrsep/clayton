@@ -5,6 +5,9 @@ import { useQueryString } from "../../../hooks/useQueryString"
 
 export const getStaticProps = async () => {
   return {
+    props: {
+      tracks: "",
+    },
     revalidate: 1,
   }
 }
