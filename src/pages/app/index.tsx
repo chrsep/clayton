@@ -49,12 +49,19 @@ const App: FC = () => {
 }
 
 const SearchMusic: FC<{ query: string }> = ({ query }) => {
-  const { data, isSuccess, isLoading } = useSearchTrack(query)
+  const { data, isSuccess, isLoading, refetch } = useSearchTrack(query)
 
   if (isLoading)
     return (
       <h1 className="px-6 leading-tight text-center text-4xl my-12 font-bold md:text-6xl max-w-lg mx-auto">
-        <div>searching</div>
+        searching
+      </h1>
+    )
+
+  if (isSuccess && data?.tracks.total === 0)
+    return (
+      <h1 className="px-6 leading-tight text-center text-4xl my-12 font-bold md:text-6xl max-w-lg mx-auto">
+        no result found
       </h1>
     )
 
@@ -91,8 +98,16 @@ const SearchMusic: FC<{ query: string }> = ({ query }) => {
         })}
       </div>
     )
-
-  return <div>Error</div>
+  return (
+    <>
+      <h1 className="px-6 leading-tight text-center text-4xl mt-12 mb-8 font-bold md:text-6xl max-w-lg mx-auto">
+        umm, something went wrong
+      </h1>
+      <Button onClick={() => refetch} className="mx-auto px-4">
+        Try again
+      </Button>
+    </>
+  )
 }
 
 interface SearchBarProps
