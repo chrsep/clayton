@@ -1,22 +1,27 @@
 import { getQueryString, newHandler } from "../../../handler"
 import { getSpotifyAccessToken } from "../../../redis"
 import { searchTracks } from "../../../spotify"
+import { SpotifyApiSearchTrackResponse } from "../../../spotify/model"
+
+export interface SearchTracksResponse extends SpotifyApiSearchTrackResponse {}
 
 const search = newHandler(async (req, res) => {
-  const sessionToken = req.cookies.token
   const q = getQueryString(req, "q")
   const type = getQueryString(req, "type")
 
+  const sessionToken = req.cookies.token
+  const accessToken = await getSpotifyAccessToken(sessionToken)
+
   if (type === "track") {
-    const accessToken = await getSpotifyAccessToken(sessionToken)
     if (accessToken) {
-      const searchResult = await searchTracks(accessToken, q)
-      res.json(searchResult)
+      const response: SearchTracksResponse = await searchTracks(accessToken, q)
+      res.json(response)
     } else {
       res.status(401).end()
     }
   }
-  res.status(400).end("Only track search is supported")
+
+  res.status(400).end("Unsupported search type")
 })
 
 export default search

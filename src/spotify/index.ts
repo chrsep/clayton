@@ -1,3 +1,5 @@
+import { SpotifyApiSearchTrackResponse } from "./model"
+
 const SPOTIFY_ACCOUNTS_URI = "https://accounts.spotify.com"
 const SCOPES = ["user-read-private", " user-read-email"]
 const {
@@ -59,7 +61,10 @@ export const requestTokens = async (
   return response.json()
 }
 
-export const searchTracks = async (accessToken: string, query: string) => {
+export const searchTracks = async (
+  accessToken: string,
+  query: string
+): Promise<SpotifyApiSearchTrackResponse> => {
   const uri = `https://api.spotify.com/v1/search?type=track&q=${query}`
 
   const headers = new Headers()
