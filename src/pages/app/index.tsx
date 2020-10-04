@@ -13,6 +13,7 @@ import SearchIcon from "../../icons/search.svg"
 import useSearchTrack from "../../hooks/useSearchTrack"
 import CrossIcon from "../../icons/cross.svg"
 import Button from "../../components/Button/Button"
+import useDebounce from "../../hooks/useDebounce"
 
 const App: FC = () => {
   const [search, setSearch] = useState("")
@@ -39,21 +40,27 @@ const App: FC = () => {
 
       <Searchbar value={search} onChange={setSearch} />
 
-      {search === "" ? (
+      {search === "" && (
         <h1 className="px-6 leading-tight text-center text-4xl my-12 font-bold md:text-6xl max-w-lg mx-auto">
           Welcome, John
         </h1>
-      ) : (
-        <SearchMusic query={search} />
       )}
+      <SearchMusic query={search} />
     </div>
   )
 }
 
 const SearchMusic: FC<{ query: string }> = ({ query }) => {
-  const { data, isSuccess, isLoading, refetch } = useSearchTrack(query)
+  const debouncedQuery = useDebounce(query, 400)
+  const { data, isSuccess, isLoading, refetch, isIdle } = useSearchTrack(
+    debouncedQuery
+  )
 
-  if (isLoading)
+  if (query === "") {
+    return <></>
+  }
+
+  if (isLoading || isIdle)
     return (
       <h1 className="px-6 leading-tight text-center text-4xl my-12 font-bold md:text-6xl max-w-lg mx-auto">
         searching
