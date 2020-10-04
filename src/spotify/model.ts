@@ -28,7 +28,7 @@ export interface Album {
   name: string
   release_date: string
   release_date_precision: string
-  total_tracks: number
+  total_tracks?: number
   type: string
   uri: string
 }

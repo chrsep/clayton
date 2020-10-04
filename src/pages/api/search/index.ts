@@ -2,10 +2,10 @@ import { NextApiResponse } from "next"
 import { getQueryString, newProtectedHandler } from "../../../handler"
 import {
   searchTracks,
-  SpotifyApiSearchTrackResponse,
+  SpotifyApiSearchTracksResponse,
 } from "../../../spotify/api"
 
-export interface SearchTracksResponse extends SpotifyApiSearchTrackResponse {}
+export interface SearchTracksResponse extends SpotifyApiSearchTracksResponse {}
 
 const search = newProtectedHandler(
   async (req, res: NextApiResponse<SearchTracksResponse>, session) => {
