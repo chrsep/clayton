@@ -27,26 +27,26 @@ export const newProtectedSpotifyHandler = (
     accessToken: string
   ) => void
 ): NextApiHandler => async (req, res) => {
-  const sessionToken = req.cookies.token
-  const accessToken = await getSpotifyAccessToken(sessionToken)
-
-  if (!accessToken) {
-    res.status(401).end()
-    return
-  }
-
-  if (parseInt(accessToken.expiresAt, 10) - Date.now() < 50) {
-    const newToken = await requestTokenRefresh(accessToken.refreshToken)
-    const updatedToken = await updateSession(
-      sessionToken,
-      newToken.access_token,
-      newToken.expires_in
-    )
-    accessToken.accessToken = updatedToken.accessToken
-    accessToken.expiresAt = updatedToken.expiresAt
-  }
-
   try {
+    const sessionToken = req.cookies.token
+    const accessToken = await getSpotifyAccessToken(sessionToken)
+
+    if (!accessToken) {
+      res.status(401).end()
+      return
+    }
+
+    if (parseInt(accessToken.expiresAt, 10) - Date.now() < 50) {
+      const newToken = await requestTokenRefresh(accessToken.refreshToken)
+      const updatedToken = await updateSession(
+        sessionToken,
+        newToken.access_token,
+        newToken.expires_in
+      )
+      accessToken.accessToken = updatedToken.accessToken
+      accessToken.expiresAt = updatedToken.expiresAt
+    }
+
     await handler(req, res, accessToken.accessToken)
   } catch (e) {
     res.status(500).end()
