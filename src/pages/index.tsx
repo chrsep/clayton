@@ -33,7 +33,7 @@ const Home: FC = () => (
     </h1>
 
     <a href="https://github.com/chrsep/clayton">
-      <div className="p-3 rounded bg-gray-300 m-3 text-black max-w-2xl md:mx-auto mt-20 hover:shadow-outline">
+      <div className="p-3 rounded bg-white m-3 text-black max-w-2xl md:mx-auto mt-20 hover:shadow-outline">
         <div className="flex items-center font-bold">
           <Svg src={GithubIcon} className="w-5 h-5" />
           <h2 className="ml-3">We are Open Source!</h2>
