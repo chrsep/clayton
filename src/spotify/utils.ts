@@ -10,5 +10,13 @@ export const callSpotifyApi = async <T>(
   headers.append("Authorization", `Bearer ${accessToken}`)
 
   const response = await fetch(uri, { headers })
+
+  if (!response.ok) {
+    const { error } = await response.json()
+    if (error) {
+      console.log(error)
+      throw new Error(error.message)
+    }
+  }
   return response.json()
 }

@@ -9,7 +9,6 @@ const client = redis.createClient({
 
 const hgetall = promisify(client.hgetall).bind(client)
 const hsetAsync = promisify(client.hset).bind(client)
-const expireatAsync = promisify(client.expireat).bind(client)
 
 export const createSession = async (
   session: string,
@@ -23,13 +22,34 @@ export const createSession = async (
     accessToken,
     "refresh_token",
     refreshToken,
+    "expires_at",
+    (Date.now() + expiresIn).toString(),
   ])
-  await expireatAsync(session, Date.now() + expiresIn)
+}
+
+export const updateSession = async (
+  session: string,
+  accessToken: string,
+  expiresIn: number
+) => {
+  const expiresAt = (Date.now() + expiresIn).toString()
+  await hsetAsync([
+    session,
+    "access_token",
+    accessToken,
+    "expires_at",
+    expiresAt,
+  ])
+  return { accessToken, expiresAt }
 }
 
 export const getSpotifyAccessToken = async (session: string) => {
   const result = await hgetall(session)
-  return result.access_token
+  return {
+    accessToken: result.access_token,
+    expiresAt: result.expires_at,
+    refreshToken: result.refresh_token,
+  }
 }
 
 export const getSpotifyRefreshToken = async (session: string) => {

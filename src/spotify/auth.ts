@@ -34,7 +34,7 @@ export const getUserAuthUri = () => {
   return `${ACCOUNTS_URI}/authorize?response_type=code&client_id=${SPOTIFY_CLIENT_ID}&scope=${encodedScopes}&redirect_uri=${encodedRedirectUri}`
 }
 
-interface SpotifyAuthGetAcccessTokenResponse {
+interface SpotifyAuthGetAccessTokenResponse {
   access_token: string
   token_type: "Bearer"
   scope: string
@@ -58,6 +58,40 @@ export const requestAccessToken = async (code: string) => {
     headers,
   })
 
-  const body: SpotifyAuthGetAcccessTokenResponse = await response.json()
+  const body: SpotifyAuthGetAccessTokenResponse = await response.json()
+  return body
+}
+
+interface SpotifyAuthRefreshTokenResponse {
+  access_token: string
+  token_type: "Bearer"
+  scope: string
+  expires_in: number
+}
+export const requestTokenRefresh = async (refreshToken: string) => {
+  const uri = `${ACCOUNTS_URI}/api/token`
+
+  const form = new URLSearchParams()
+  form.append("refresh_token", refreshToken)
+  form.append("grant_type", "refresh_token")
+
+  const headers = new Headers()
+  headers.append("Authorization", `Basic ${getAuthorizationHeader()}`)
+
+  const response = await fetch(uri, {
+    method: "POST",
+    body: form,
+    headers,
+  })
+
+  if (!response.ok) {
+    const { error } = await response.json()
+    if (error) {
+      console.log(error)
+      throw new Error(error.message)
+    }
+  }
+
+  const body: SpotifyAuthRefreshTokenResponse = await response.json()
   return body
 }
