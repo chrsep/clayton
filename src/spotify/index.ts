@@ -1,4 +1,4 @@
-import { SpotifyApiSearchTrackResponse } from "./model"
+import { Tracks } from "./model"
 
 const SPOTIFY_ACCOUNTS_URI = "https://accounts.spotify.com"
 const SCOPES = ["user-read-private", " user-read-email"]
@@ -61,6 +61,9 @@ export const requestTokens = async (
   return response.json()
 }
 
+export interface SpotifyApiSearchTrackResponse {
+  tracks: Tracks
+}
 export const searchTracks = async (
   accessToken: string,
   query: string

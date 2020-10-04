@@ -1,7 +1,6 @@
 import { getQueryString, newHandler } from "../../../handler"
 import { getSpotifyAccessToken } from "../../../redis"
-import { searchTracks } from "../../../spotify"
-import { SpotifyApiSearchTrackResponse } from "../../../spotify/model"
+import { searchTracks, SpotifyApiSearchTrackResponse } from "../../../spotify"
 
 export interface SearchTracksResponse extends SpotifyApiSearchTrackResponse {}
 
