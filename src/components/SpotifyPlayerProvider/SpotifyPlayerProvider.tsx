@@ -25,29 +25,31 @@ const SpotifyPlayerProvider: FC<SpotifyPlayerProviderProps> = ({
         deviceId,
         ready: deviceId !== "",
         setAccessToken: (token) => {
-          setIsLoading(true)
-          const spotifySdk = document.createElement("script")
-          spotifySdk.type = "text/javascript"
-          window.onSpotifyWebPlaybackSDKReady = () => {
-            const p = new Spotify.Player({
-              name: "Clayton",
-              getOAuthToken: (cb: any) => cb(token),
-            })
+          if (!player && !isLoading) {
+            setIsLoading(true)
+            const spotifySdk = document.createElement("script")
+            spotifySdk.type = "text/javascript"
+            window.onSpotifyWebPlaybackSDKReady = () => {
+              const p = new Spotify.Player({
+                name: "Clayton",
+                getOAuthToken: (cb: any) => cb(token),
+              })
 
-            p.addListener("ready", ({ device_id }: any) =>
-              setDeviceId(device_id)
-            )
+              p.addListener("ready", ({ device_id }: any) =>
+                setDeviceId(device_id)
+              )
 
-            p.addListener("not_ready", () => setDeviceId(""))
+              p.addListener("not_ready", () => setDeviceId(""))
 
-            p.connect()
+              p.connect()
 
-            setPlayer(p)
-            setIsLoading(false)
+              setPlayer(p)
+              setIsLoading(false)
+            }
+            // Load the sdk
+            spotifySdk.src = "https://sdk.scdn.co/spotify-player.js"
+            document.getElementsByTagName("head")[0].appendChild(spotifySdk)
           }
-          // Load the sdk
-          spotifySdk.src = "https://sdk.scdn.co/spotify-player.js"
-          document.getElementsByTagName("head")[0].appendChild(spotifySdk)
         },
       }}
     >
