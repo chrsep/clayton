@@ -10,7 +10,10 @@ const client = redis.createClient({
 const hgetall = promisify(client.hgetall).bind(client)
 const hsetAsync = promisify(client.hset).bind(client)
 
-export const createSession = async (
+// =================================================================================
+// User's access token, can be used to get user and personalized data
+// =================================================================================
+export const saveSessionToken = async (
   session: string,
   accessToken: string,
   refreshToken: string,
@@ -27,7 +30,8 @@ export const createSession = async (
   ])
 }
 
-export const updateSession = async (
+// refresh tokens are valid forever, no need to overwrite it
+export const updateSessionToken = async (
   session: string,
   accessToken: string,
   expiresIn: number
@@ -43,7 +47,7 @@ export const updateSession = async (
   return { accessToken, expiresAt }
 }
 
-export const getSpotifyAccessToken = async (session: string) => {
+export const getSessionToken = async (session: string) => {
   const result = await hgetall(session)
   return {
     accessToken: result.access_token,
@@ -52,7 +56,20 @@ export const getSpotifyAccessToken = async (session: string) => {
   }
 }
 
-export const getSpotifyRefreshToken = async (session: string) => {
-  const result = await hgetall(session)
-  return result.refresh_token
+// ===================================================================
+// App's access token, doesn't have access to user data
+// ====================================================================
+export const upsertAppToken = async (
+  accessToken: string,
+  expiresIn: number
+) => {
+  await hsetAsync([
+    "client_credentials",
+    "access_token",
+    accessToken,
+    "expires_at",
+    (Date.now() + expiresIn).toString(),
+  ])
 }
+
+export const getClientCredentials = async () => {}

@@ -1,8 +1,10 @@
-// Spotify authorization helpers
+// Spotify authorization code
+// More info https://developer.spotify.com/documentation/general/guides/authorization-guide/#client-credentials-flow
 const ACCOUNTS_URI = "https://accounts.spotify.com"
 
 const SCOPES = ["user-read-private", " user-read-email"]
 
+// Get and validate env
 const {
   SPOTIFY_CLIENT_ID,
   SPOTIFY_CLIENT_SECRET,
@@ -17,34 +19,10 @@ if (!SPOTIFY_AUTH_REDIRECT_URI) {
   throw new Error("Invalid SPOTIFY_CLIENT_SECRET is empty, check your env ")
 }
 
-const generateAuthorizationHeader = () => {
-  const value = Buffer.from(
-    `${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`
-  ).toString("base64")
-
-  const headers = new Headers()
-  headers.append("Authorization", `Basic ${value}`)
-
-  return headers
-}
-
-const callSpotifyTokenApi = async <T>(body: URLSearchParams): Promise<T> => {
-  const uri = `${ACCOUNTS_URI}/api/token`
-  const headers = generateAuthorizationHeader()
-
-  const response = await fetch(uri, { method: "POST", body, headers })
-
-  if (!response.ok) {
-    const { error } = await response.json()
-    if (error) {
-      console.log(error)
-    }
-    throw new Error(error.message)
-  }
-
-  return response.json()
-}
-
+// =================================================================================
+//  Authorization Code flow
+//  token can be used to get user and personalized data
+// =================================================================================
 export const getUserAuthUri = () => {
   const encodedScopes = encodeURIComponent(SCOPES.join(" "))
   const encodedRedirectUri = encodeURIComponent(SPOTIFY_AUTH_REDIRECT_URI)
@@ -81,9 +59,13 @@ export const requestTokenRefresh = async (refreshToken: string) => {
   return callSpotifyTokenApi<SpotifyAuthRefreshTokenResponse>(form)
 }
 
+// =================================================================
+// Client Credentials Flow
+// token doesn't have access to user data
+// ==================================================================
 interface SpotifyAuthClientCredentialsResponse {
   access_token: string
-  token_type: string
+  token_type: "Bearer"
   expires_int: number
 }
 export const requestClientCredentials = async () => {
@@ -91,4 +73,32 @@ export const requestClientCredentials = async () => {
   form.append("grant_type", "client_credentials")
 
   return callSpotifyTokenApi<SpotifyAuthClientCredentialsResponse>(form)
+}
+
+// Helper functions
+const generateAuthorizationHeader = () => {
+  const value = Buffer.from(
+    `${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`
+  ).toString("base64")
+
+  const headers = new Headers()
+  headers.append("Authorization", `Basic ${value}`)
+  return headers
+}
+
+const callSpotifyTokenApi = async <T>(body: URLSearchParams): Promise<T> => {
+  const uri = `${ACCOUNTS_URI}/api/token`
+  const headers = generateAuthorizationHeader()
+
+  const response = await fetch(uri, { method: "POST", body, headers })
+
+  if (!response.ok) {
+    const { error } = await response.json()
+    if (error) {
+      console.log(error)
+    }
+    throw new Error(error.message)
+  }
+
+  return response.json()
 }

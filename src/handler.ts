@@ -1,6 +1,6 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next"
 import * as Sentry from "@sentry/node"
-import { getSpotifyAccessToken, updateSession } from "./redis"
+import { getSessionToken, updateSessionToken } from "./redis"
 import { requestTokenRefresh } from "./spotify/auth"
 
 Sentry.init({
@@ -29,7 +29,7 @@ export const newProtectedSpotifyHandler = (
 ): NextApiHandler => async (req, res) => {
   try {
     const sessionToken = req.cookies.token
-    const accessToken = await getSpotifyAccessToken(sessionToken)
+    const accessToken = await getSessionToken(sessionToken)
 
     if (!accessToken) {
       res.status(401).end()
@@ -38,7 +38,7 @@ export const newProtectedSpotifyHandler = (
 
     if (parseInt(accessToken.expiresAt, 10) - Date.now() < 50) {
       const newToken = await requestTokenRefresh(accessToken.refreshToken)
-      const updatedToken = await updateSession(
+      const updatedToken = await updateSessionToken(
         sessionToken,
         newToken.access_token,
         newToken.expires_in
