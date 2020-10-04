@@ -1,5 +1,5 @@
 import Head from "next/head"
-import React, { FC } from "react"
+import React, { FC, useContext, useEffect } from "react"
 import { GetStaticPaths, GetStaticProps } from "next"
 import Svg from "react-optimized-image/lib/components/Svg"
 import Link from "next/link"
@@ -14,6 +14,9 @@ import {
 } from "../../../spotify/api"
 import Button from "../../../components/Button/Button"
 import CrossIcon from "../../../icons/cross.svg"
+import useGetAccessToken from "../../../hooks/useGetAccessToken"
+import usePlaySpotifyUri from "../../../hooks/usePlaySpotifyUri"
+import { SpotifyPlayerContext } from "../../../components/SpotifyPlayerProvider/SpotifyPlayerProvider"
 
 enum Modality {
   Minor,
@@ -173,15 +176,42 @@ const TrackPreview: FC<{
         </div>
       </div>
 
-      <Looper />
+      <Looper
+        track={track}
+        audioAnalysis={audioAnalysis}
+        audioFeatures={audioFeatures}
+      />
     </div>
   )
 }
 
-const Looper = () => {
+const Looper: FC<{
+  track: SpotifyApiGetTrackResponse
+  audioAnalysis: SpotifyApiGetAudioAnalysisResponse
+  audioFeatures: SpotifyApiGetAudioFeaturesResponse
+}> = ({ track }) => {
+  const { data } = useGetAccessToken()
+  const [playSpotifyUri] = usePlaySpotifyUri()
+  const player = useContext(SpotifyPlayerContext)
+
+  useEffect(() => {
+    if (data?.accessToken) {
+      player.setAccessToken(data.accessToken)
+    }
+  }, [data?.accessToken])
+
   return (
-    <div className="bg-white rounded p-3 flex flex-col items-center">
-      <Button>play</Button>
+    <div className="bg-white rounded p-3 items-center hidden md:flex flex-col ">
+      <Button
+        onClick={async () => {
+          await playSpotifyUri({
+            spotifyUri: track.uri,
+            deviceId: player.deviceId,
+          })
+        }}
+      >
+        play
+      </Button>
     </div>
   )
 }

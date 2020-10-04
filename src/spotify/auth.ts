@@ -2,7 +2,7 @@
 // More info https://developer.spotify.com/documentation/general/guides/authorization-guide/#client-credentials-flow
 const ACCOUNTS_URI = "https://accounts.spotify.com"
 
-const SCOPES = ["user-read-private", " user-read-email"]
+const SCOPES = ["streaming", "user-read-private", " user-read-email"]
 
 // Get and validate env
 const {

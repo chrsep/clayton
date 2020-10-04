@@ -25,11 +25,7 @@ export const newHandler = (handler: NextApiHandler): NextApiHandler => async (
  * Create new handler that requires authentication checks.
  * */
 export const newProtectedHandler = (
-  handler: (
-    req: NextApiRequest,
-    res: NextApiResponse,
-    accessToken: string
-  ) => void
+  handler: (req: NextApiRequest, res: NextApiResponse, session: string) => void
 ): NextApiHandler =>
   newHandler(async (req, res) => {
     const sessionToken = req.cookies.token

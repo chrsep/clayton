@@ -14,7 +14,8 @@ const BASE_URL = `https://api.spotify.com/v1`
  * */
 export const callUserAuthorizedSpotifyApi = async <T>(
   session: string,
-  url: string
+  url: string,
+  options: RequestInit = {}
 ): Promise<T> => {
   const uri = `${BASE_URL}${url}`
 
@@ -35,7 +36,7 @@ export const callUserAuthorizedSpotifyApi = async <T>(
     token.expiresAt = updatedToken.expiresAt
   }
 
-  return callSpotifyApi(token.accessToken, uri)
+  return callSpotifyApi(token.accessToken, uri, options)
 }
 
 /**
@@ -60,11 +61,19 @@ export const callAppAuthorizedSpotifyApi = async <T>(
 /**
  * Generic function that calls all spotify APIs with error checking and logging.
  * */
-const callSpotifyApi = async (accessToken: string, uri: string) => {
+const callSpotifyApi = async (
+  accessToken: string,
+  uri: string,
+  options: RequestInit = {}
+) => {
   const headers = new Headers()
   headers.append("Authorization", `Bearer ${accessToken}`)
 
-  const response = await fetch(uri, { headers })
+  const response = await fetch(uri, { headers, ...options })
+
+  if (response.status === 204) {
+    return undefined
+  }
 
   if (!response.ok) {
     const { error } = await response.json()

@@ -92,3 +92,18 @@ export const getAudioFeatures = async (trackId: string) => {
     `/audio-features/${trackId}`
   )
 }
+
+export const playSpotifyUri = async (
+  session: string,
+  spotifyUri: string,
+  deviceId: string
+) => {
+  return callUserAuthorizedSpotifyApi<SpotifyApiGetTrackResponse>(
+    session,
+    `/me/player/play?device_id=${deviceId}`,
+    {
+      body: JSON.stringify({ uris: [spotifyUri] }),
+      method: "PUT",
+    }
+  )
+}
