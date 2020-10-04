@@ -172,6 +172,16 @@ const TrackPreview: FC<{
           />
         </div>
       </div>
+
+      <Looper />
+    </div>
+  )
+}
+
+const Looper = () => {
+  return (
+    <div className="bg-white rounded p-3 flex flex-col items-center">
+      <Button>play</Button>
     </div>
   )
 }
