@@ -1,21 +1,10 @@
 import Redis from "ioredis"
 
-let c: Redis.Redis
-
-const getClient = () => {
-  if (c === undefined || c.status === "end") {
-    console.log(`new redis created, status ${c.status}`)
-    c = new Redis({
-      host: process.env.REDIS_HOST,
-      password: process.env.REDIS_PASSWORD
-        ? process.env.REDIS_PASSWORD
-        : undefined,
-      port: parseInt(process.env.REDIS_PORT ?? "6379", 10),
-    })
-  }
-
-  return c
-}
+const client = new Redis({
+  host: process.env.REDIS_HOST,
+  password: process.env.REDIS_PASSWORD ? process.env.REDIS_PASSWORD : undefined,
+  port: parseInt(process.env.REDIS_PORT ?? "6379", 10),
+})
 
 // =================================================================================
 // User's access token, can be used to get user and personalized data
@@ -26,7 +15,6 @@ export const saveUserTokens = async (
   refreshToken: string,
   expiresIn: number
 ) => {
-  const client = getClient()
   const expireAt = (Date.now() + expiresIn).toString()
   await client
     .multi()
@@ -42,7 +30,6 @@ export const updateUserTokens = async (
   accessToken: string,
   expiresIn: number
 ) => {
-  const client = getClient()
   const expiresAt = (Date.now() + expiresIn).toString()
   await client
     .multi()
@@ -54,7 +41,6 @@ export const updateUserTokens = async (
 }
 
 export const getUserTokens = async (session: string) => {
-  const client = getClient()
   const result = await client.hgetall(session)
   if (result)
     return {
@@ -73,7 +59,6 @@ export const upsertAppToken = async (
   accessToken: string,
   expiresIn: number
 ) => {
-  const client = getClient()
   const expiresAt = (Date.now() + expiresIn).toString()
   await client
     .multi()
@@ -85,7 +70,6 @@ export const upsertAppToken = async (
 }
 
 export const getAppTokens = async () => {
-  const client = getClient()
   const result = await client.hgetall("client_credentials")
   if (result)
     return { accessToken: result.access_token, expiresAt: result.expires_at }
