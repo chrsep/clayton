@@ -229,11 +229,13 @@ export const getStaticProps: GetStaticProps<
   Props,
   { songId: string }
 > = async ({ params }) => {
+  console.log("start executing incremental static regeneration")
   const result = await Promise.all([
     getTrack(params?.songId ?? ""),
     getAudioAnalysis(params?.songId ?? ""),
     getAudioFeatures(params?.songId ?? ""),
   ])
+  console.log("finish executing incremental static regeneration")
 
   return {
     props: {
