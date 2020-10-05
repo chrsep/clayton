@@ -4,6 +4,7 @@ let c: Redis.Redis
 
 const getClient = () => {
   if (c === undefined || c.status === "end") {
+    console.log(`new redis created, status ${c.status}`)
     c = new Redis({
       host: process.env.REDIS_HOST,
       password: process.env.REDIS_PASSWORD
