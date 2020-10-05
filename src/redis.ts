@@ -1,12 +1,33 @@
 import Redis from "ioredis"
 
-console.log("Creating Redis")
 const client = new Redis({
   host: process.env.REDIS_HOST,
   password: process.env.REDIS_PASSWORD ? process.env.REDIS_PASSWORD : undefined,
   port: parseInt(process.env.REDIS_PORT ?? "6379", 10),
 })
-console.log("Finish creating Redis")
+client.on("connect", () => {
+  console.log("redis: redis connection established")
+})
+
+client.on("ready", () => {
+  console.log("redis: is ready")
+})
+
+client.on("error", () => {
+  console.log("redis: error")
+})
+
+client.on("close", () => {
+  console.log("redis: connection closed")
+})
+
+client.on("reconnecting", () => {
+  console.log("redis: reconnecting")
+})
+
+client.on("end", () => {
+  console.log("redis: connection ended")
+})
 
 // =================================================================================
 // User's access token, can be used to get user and personalized data
