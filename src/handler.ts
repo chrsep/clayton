@@ -13,7 +13,9 @@ export const newHandler = (handler: NextApiHandler): NextApiHandler => async (
   res
 ) => {
   try {
+    console.log("start executing handler")
     await handler(req, res)
+    console.log("finish executing handler")
   } catch (e) {
     res.status(500).end()
     console.error(e)
