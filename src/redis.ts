@@ -1,14 +1,20 @@
-import redis from "redis"
-import { promisify } from "util"
+import Redis from "ioredis"
 
-const client = redis.createClient({
-  host: process.env.REDIS_HOST,
-  password: process.env.REDIS_PASSWORD ? process.env.REDIS_PASSWORD : undefined,
-  port: parseInt(process.env.REDIS_PORT ?? "6379", 10),
-})
+let c: Redis.Redis
 
-const hgetall = promisify(client.hgetall).bind(client)
-const hsetAsync = promisify(client.hset).bind(client)
+const getClient = () => {
+  if (c === undefined || c.status === "end") {
+    c = new Redis({
+      host: process.env.REDIS_HOST,
+      password: process.env.REDIS_PASSWORD
+        ? process.env.REDIS_PASSWORD
+        : undefined,
+      port: parseInt(process.env.REDIS_PORT ?? "6379", 10),
+    })
+  }
+
+  return c
+}
 
 // =================================================================================
 // User's access token, can be used to get user and personalized data
@@ -19,15 +25,14 @@ export const saveUserTokens = async (
   refreshToken: string,
   expiresIn: number
 ) => {
-  await hsetAsync([
-    session,
-    "access_token",
-    accessToken,
-    "refresh_token",
-    refreshToken,
-    "expires_at",
-    (Date.now() + expiresIn).toString(),
-  ])
+  const client = getClient()
+  const expireAt = (Date.now() + expiresIn).toString()
+  await client
+    .multi()
+    .hset(session, "access_token", accessToken)
+    .hset(session, "refresh_token", refreshToken)
+    .hset(session, "expires_at", expireAt)
+    .exec()
 }
 
 // refresh tokens are valid forever, no need to overwrite it
@@ -36,19 +41,20 @@ export const updateUserTokens = async (
   accessToken: string,
   expiresIn: number
 ) => {
+  const client = getClient()
   const expiresAt = (Date.now() + expiresIn).toString()
-  await hsetAsync([
-    session,
-    "access_token",
-    accessToken,
-    "expires_at",
-    expiresAt,
-  ])
+  await client
+    .multi()
+    .hset(session, "access_token", accessToken)
+    .hset(session, "expires_at", expiresAt)
+    .exec()
+
   return { accessToken, expiresAt }
 }
 
 export const getUserTokens = async (session: string) => {
-  const result = await hgetall(session)
+  const client = getClient()
+  const result = await client.hgetall(session)
   if (result)
     return {
       accessToken: result.access_token,
@@ -66,27 +72,22 @@ export const upsertAppToken = async (
   accessToken: string,
   expiresIn: number
 ) => {
+  const client = getClient()
   const expiresAt = (Date.now() + expiresIn).toString()
-  await hsetAsync([
-    "client_credentials",
-    "access_token",
-    accessToken,
-    "expires_at",
-    expiresAt,
-  ])
-  return {
-    accessToken,
-    expiresAt,
-  }
+  await client
+    .multi()
+    .hset("client_credentials", "access_token", accessToken)
+    .hset("client_credentials", "expires_at", expiresAt)
+    .exec()
+
+  return { accessToken, expiresAt }
 }
 
 export const getAppTokens = async () => {
-  const result = await hgetall("client_credentials")
+  const client = getClient()
+  const result = await client.hgetall("client_credentials")
   if (result)
-    return {
-      accessToken: result.access_token,
-      expiresAt: result.expires_at,
-    }
+    return { accessToken: result.access_token, expiresAt: result.expires_at }
 
   return undefined
 }
