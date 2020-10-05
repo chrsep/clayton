@@ -1,5 +1,6 @@
 import Redis from "ioredis"
 
+console.log("redis: new redis instance created")
 const client = new Redis({
   host: process.env.REDIS_HOST,
   password: process.env.REDIS_PASSWORD ? process.env.REDIS_PASSWORD : undefined,
