@@ -88,7 +88,7 @@ const Play: FC<Props> = ({
       </Head>
       <div className="p-3 max-w-6xl mx-auto">
         <div className="flex items-center">
-          <Link href={`/app?search=${search}`}>
+          <Link href={`/app${search ? `?search=${search}` : ""}`}>
             <a className="">
               <Button className="text-sm px-2 bg-black border-2">
                 <Svg src={ChevronIcon} className="w-6 h-6" />
