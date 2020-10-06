@@ -28,11 +28,11 @@ const App: FC = () => {
   }, [defaultSearch, search])
 
   useEffect(() => {
-    if (search) {
+    if (search !== undefined) {
       router
         .push({
           pathname: "/app",
-          query: { search },
+          query: search === "" ? undefined : { search },
         })
         .catch((e) => {
           throw e
@@ -62,7 +62,7 @@ const App: FC = () => {
 
       <Searchbar value={search} onChange={setSearch} />
 
-      {search === "" && (
+      {!search && (
         <h1 className="px-6 leading-tight text-center text-4xl my-12 font-bold md:text-6xl max-w-lg mx-auto">
           Welcome, John
         </h1>
