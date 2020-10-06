@@ -63,12 +63,6 @@ export const requestRefreshUserAccessToken = async (refreshToken: string) => {
 // Client Credentials Flow
 // token doesn't have access to user data
 // ==================================================================
-interface SpotifyAuthClientCredentialsResponse {
-  access_token: string
-  token_type: "Bearer"
-  expires_in: number
-}
-
 let token: {
   accessToken: string
   expiresAt: number
@@ -78,9 +72,11 @@ export const requestAppAccessToken = async () => {
   if (!token || token.expiresAt - Date.now() < 50) {
     const form = new URLSearchParams()
     form.append("grant_type", "client_credentials")
-    const newToken = await callSpotifyTokenApi<
-      SpotifyAuthClientCredentialsResponse
-    >(form)
+    const newToken = await callSpotifyTokenApi<{
+      access_token: string
+      token_type: "Bearer"
+      expires_in: number
+    }>(form)
     token = {
       accessToken: newToken.access_token,
       expiresAt: Date.now() + newToken.expires_in,
