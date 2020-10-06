@@ -102,7 +102,11 @@ const SearchMusic: FC<{ query: string }> = ({ query }) => {
         {data?.tracks.items.map(({ id, name, album, artists }, idx) => {
           const albumThumbnail = album.images.find(({ height }) => height < 100)
           return (
-            <Link key={id} href="/app/play/[songId]" as={`/app/play/${id}`}>
+            <Link
+              key={id}
+              href={`/app/play/[songId]?search=${query}`}
+              as={`/app/play/${id}?search=${query}`}
+            >
               <a className="p-4 flex items-center w-full md:w-1/2 hover:bg-white hover:text-black truncate">
                 <img
                   alt={`${name} album cover`}
