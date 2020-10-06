@@ -5,9 +5,7 @@ import { GetAccessTokenResponse } from "../pages/api/auth/access-token"
 const useGetAccessToken = () => {
   const getAccessToken = getApi<GetAccessTokenResponse>(`/auth/access-token`)
 
-  return useQuery(["accessToken"], getAccessToken, {
-    refetchOnWindowFocus: false,
-  })
+  return useQuery(["accessToken"], getAccessToken)
 }
 
 export default useGetAccessToken
