@@ -229,6 +229,7 @@ const retrievePageData = async (songId: string): Promise<Props> => {
   let count = 0
   let props: Props
   try {
+    console.log(`play: fetching data`)
     const result = await Promise.all([
       getTrack(songId),
       getAudioAnalysis(songId),
@@ -242,7 +243,7 @@ const retrievePageData = async (songId: string): Promise<Props> => {
       lastUpdated: Date.now(),
     }
   } catch (e) {
-    console.log("play: retry fetching data")
+    console.log(`play: retry fetching data for the ${count} times`)
     // Prevent infinite loop, only allows for 3x
     count += 1
     if (count > 3) {
