@@ -229,6 +229,7 @@ export const getStaticProps: GetStaticProps<
   Props,
   { songId: string }
 > = async ({ params }) => {
+  console.log("getStaticProps called")
   const retrievePageData = async (songId: string): Promise<Props> => {
     let count = 0
     let props: Props
@@ -259,9 +260,9 @@ export const getStaticProps: GetStaticProps<
       await new Promise((r) => setTimeout(r, Math.random() * 1000))
       props = await retrievePageData(songId)
     }
-
     return props
   }
+  console.log("getStaticProps finished")
 
   const props = await retrievePageData(params?.songId ?? "")
 
