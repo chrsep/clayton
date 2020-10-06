@@ -24,8 +24,8 @@ const App: FC = () => {
   const [search, setSearch] = useState<string>(defaultSearch ?? "")
 
   useEffect(() => {
-    if (defaultSearch) setSearch(defaultSearch)
-  }, [defaultSearch])
+    if (defaultSearch && search === "") setSearch(defaultSearch)
+  }, [defaultSearch, search])
 
   useEffect(() => {
     if (search) {
