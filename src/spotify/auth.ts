@@ -68,11 +68,26 @@ interface SpotifyAuthClientCredentialsResponse {
   token_type: "Bearer"
   expires_in: number
 }
-export const requestAppAccessToken = async () => {
-  const form = new URLSearchParams()
-  form.append("grant_type", "client_credentials")
 
-  return callSpotifyTokenApi<SpotifyAuthClientCredentialsResponse>(form)
+let token: {
+  accessToken: string
+  expiresAt: number
+}
+export const requestAppAccessToken = async () => {
+  // Request new token if instance doesn't have one
+  if (!token || token.expiresAt - Date.now() < 50) {
+    const form = new URLSearchParams()
+    form.append("grant_type", "client_credentials")
+    const newToken = await callSpotifyTokenApi<
+      SpotifyAuthClientCredentialsResponse
+    >(form)
+    token = {
+      accessToken: newToken.access_token,
+      expiresAt: Date.now() + newToken.expires_in,
+    }
+  }
+
+  return token
 }
 
 // Helper functions

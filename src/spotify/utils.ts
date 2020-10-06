@@ -1,9 +1,4 @@
-import {
-  getAppTokens,
-  getUserTokens,
-  updateUserTokens,
-  upsertAppToken,
-} from "../redis"
+import { getUserTokens, updateUserTokens } from "../redis"
 import { requestAppAccessToken, requestRefreshUserAccessToken } from "./auth"
 
 const BASE_URL = `https://api.spotify.com/v1`
@@ -48,12 +43,7 @@ export const callAppAuthorizedSpotifyApi = async <T>(
 ): Promise<T> => {
   const uri = `${BASE_URL}${url}`
 
-  let token = await getAppTokens()
-
-  if (!token || parseInt(token.expiresAt, 10) - Date.now() < 50) {
-    const newToken = await requestAppAccessToken()
-    token = await upsertAppToken(newToken.access_token, newToken.expires_in)
-  }
+  const token = await requestAppAccessToken()
 
   return callSpotifyApi(token.accessToken, uri)
 }
