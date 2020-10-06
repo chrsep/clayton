@@ -14,7 +14,6 @@ import {
 } from "../../../spotify/api"
 import Button from "../../../components/Button/Button"
 import ChevronIcon from "../../../icons/chevron_left.svg"
-import useGetAccessToken from "../../../hooks/useGetAccessToken"
 import usePlaySpotifyUri from "../../../hooks/usePlaySpotifyUri"
 import { SpotifyPlayerContext } from "../../../components/SpotifyPlayerProvider/SpotifyPlayerProvider"
 import useQueryString from "../../../hooks/useQueryString"
@@ -109,7 +108,7 @@ const Play: FC<Props> = ({
         </div>
       ) : (
         <h1 className="px-3 leading-tight text-center text-4xl my-12 font-bold md:text-6xl max-w-2xl mx-auto">
-          Loading music data and analysis
+          Loading track data and analysis
         </h1>
       )}
     </div>
@@ -192,19 +191,40 @@ const Looper: FC<{
   track: SpotifyApiGetTrackResponse
   audioAnalysis: SpotifyApiGetAudioAnalysisResponse
   audioFeatures: SpotifyApiGetAudioFeaturesResponse
-}> = ({ track }) => {
-  const { data } = useGetAccessToken()
+}> = ({ track, audioAnalysis }) => {
   const [playSpotifyUri] = usePlaySpotifyUri()
   const player = useContext(SpotifyPlayerContext)
 
+  if (!player) {
+    return <div>Loading Player</div>
+  }
+
   useEffect(() => {
-    if (data?.accessToken) {
-      player.setAccessToken(data.accessToken)
-    }
-  }, [data?.accessToken])
+    player.load()
+  }, [])
 
   return (
-    <div className="bg-white rounded p-3 items-center hidden md:flex flex-col ">
+    <div className="bg-white rounded p-3 items-center flex flex-col ">
+      <div className="flex flex-wrap w-full items-end">
+        {audioAnalysis.bars.map(({ start }, idx) => {
+          const sectionIdx = audioAnalysis.sections.findIndex(
+            (section) => section.start - 1 > start
+          )
+          return (
+            <div key={start} className="w-1/12 mb-2 text-xs">
+              {idx % 12 === 0 && <p className="text-black">{start}</p>}
+              <Button
+                className="w-full h-6 bg-indigo-800 border rounded-none border-black hover:bg-indigo-400"
+                onClick={() => {
+                  player.seek(start)
+                }}
+              >
+                {sectionIdx}
+              </Button>
+            </div>
+          )
+        })}
+      </div>
       <Button
         onClick={async () => {
           await playSpotifyUri({
@@ -212,6 +232,7 @@ const Looper: FC<{
             deviceId: player.deviceId,
           })
         }}
+        disabled={player.isLoading}
       >
         play
       </Button>

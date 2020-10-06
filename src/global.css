@@ -10,4 +10,8 @@ button {
     @apply bg-indigo-600 px-3 py-2 rounded-full tracking-wide font-bold flex items-center border border-indigo-500;
 }
 
+button:disabled {
+    @apply opacity-25;
+}
+
 @tailwind utilities;

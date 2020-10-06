@@ -104,8 +104,8 @@ const SearchMusic: FC<{ query: string }> = ({ query }) => {
           return (
             <Link
               key={id}
-              href={`/app/play/[songId]?search=${query}`}
-              as={`/app/play/${id}?search=${query}`}
+              href={`/app/track/[songId]?search=${query}`}
+              as={`/app/track/${id}?search=${query}`}
             >
               <a className="p-4 flex items-center w-full md:w-1/2 hover:bg-white hover:text-black truncate">
                 <img
