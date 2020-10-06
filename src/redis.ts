@@ -1,15 +1,18 @@
 import Redis from "ioredis"
 
+// =============== This part seems to be called again and again =========================
 console.log("redis: new redis instance created")
 const client = new Redis({
   host: process.env.REDIS_HOST,
   password: process.env.REDIS_PASSWORD ? process.env.REDIS_PASSWORD : undefined,
   port: parseInt(process.env.REDIS_PORT ?? "6379", 10),
   reconnectOnError(error: Error) {
-    const targetError = "max number of client"
-    return error.message.includes(targetError)
+    console.log(error)
+    return true
   },
 })
+// =============== The part above only gets called a couple of times on "next start" =============
+
 client.on("connect", () => {
   console.log("redis: redis connection established")
 })
