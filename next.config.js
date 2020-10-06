@@ -40,6 +40,13 @@ module.exports = withPlugins([withPrefresh, optimizedImages], {
         })
     }
     // ===================================== Use preact config
+    if (!isServer) {
+      config.node = {
+        net: "empty",
+        tls: "empty",
+        dns: "empty",
+      }
+    }
 
     return config
   },

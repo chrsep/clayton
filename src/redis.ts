@@ -5,6 +5,10 @@ const client = new Redis({
   host: process.env.REDIS_HOST,
   password: process.env.REDIS_PASSWORD ? process.env.REDIS_PASSWORD : undefined,
   port: parseInt(process.env.REDIS_PORT ?? "6379", 10),
+  reconnectOnError(error: Error) {
+    const targetError = "max number of client"
+    return error.message.includes(targetError)
+  },
 })
 client.on("connect", () => {
   console.log("redis: redis connection established")
