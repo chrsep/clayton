@@ -1,61 +1,69 @@
-import React, { createContext, FC, useState } from "react"
+import React, { createContext, FC, useEffect, useState } from "react"
+import useGetAccessToken from "../../hooks/useGetAccessToken"
 
-export const SpotifyPlayerContext = createContext({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  setAccessToken: (value: string) => {},
-  deviceId: "",
-  player: null,
-  isLoading: false,
-  ready: false,
-})
+export const SpotifyPlayerContext = createContext<{
+  deviceId: string
+  isLoading: boolean
+  ready: boolean
+  load: () => void
+  seek: (time: number) => Promise<void>
+} | null>(null)
 
 export interface SpotifyPlayerProviderProps {}
 const SpotifyPlayerProvider: FC<SpotifyPlayerProviderProps> = ({
   children,
 }) => {
+  const accessToken = useGetAccessToken()
   const [player, setPlayer] = useState<any>(null)
   const [deviceId, setDeviceId] = useState<any>(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [shouldLoad, setShouldLoad] = useState(false)
+
+  const onSdkLoaded = () => {
+    const p = new Spotify.Player({
+      name: "Clayton",
+      getOAuthToken: (cb: any) => cb(accessToken.data?.accessToken),
+    })
+
+    p.addListener("ready", ({ device_id }: any) => setDeviceId(device_id))
+    p.addListener("not_ready", () => setDeviceId(""))
+    p.connect()
+
+    setPlayer(p)
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    if (accessToken.data && shouldLoad) {
+      window.onSpotifyWebPlaybackSDKReady = onSdkLoaded
+      loadSpotifyPlaybackSdk()
+    }
+  }, [accessToken.data && shouldLoad])
 
   return (
     <SpotifyPlayerContext.Provider
       value={{
         isLoading,
-        player,
         deviceId,
         ready: deviceId !== "",
-        setAccessToken: (token) => {
-          if (!player && !isLoading) {
-            setIsLoading(true)
-            const spotifySdk = document.createElement("script")
-            spotifySdk.type = "text/javascript"
-            window.onSpotifyWebPlaybackSDKReady = () => {
-              const p = new Spotify.Player({
-                name: "Clayton",
-                getOAuthToken: (cb: any) => cb(token),
-              })
-
-              p.addListener("ready", ({ device_id }: any) =>
-                setDeviceId(device_id)
-              )
-
-              p.addListener("not_ready", () => setDeviceId(""))
-
-              p.connect()
-
-              setPlayer(p)
-              setIsLoading(false)
-            }
-            // Load the sdk
-            spotifySdk.src = "https://sdk.scdn.co/spotify-player.js"
-            document.getElementsByTagName("head")[0].appendChild(spotifySdk)
-          }
+        load: () => {
+          setShouldLoad(true)
+        },
+        seek: async (time: number) => {
+          await player.seek(time * 1000)
         },
       }}
     >
       {children}
     </SpotifyPlayerContext.Provider>
   )
+}
+
+const loadSpotifyPlaybackSdk = () => {
+  const spotifySdk = document.createElement("script")
+  spotifySdk.type = "text/javascript"
+  spotifySdk.src = "https://sdk.scdn.co/spotify-player.js"
+  document.getElementsByTagName("head")[0].appendChild(spotifySdk)
 }
 
 export default SpotifyPlayerProvider
