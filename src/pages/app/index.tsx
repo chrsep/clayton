@@ -21,10 +21,10 @@ import useQueryString from "../../hooks/useQueryString"
 const App: FC = () => {
   const router = useRouter()
   const defaultSearch = useQueryString("search")
-  const [search, setSearch] = useState<string>(defaultSearch ?? "")
+  const [search, setSearch] = useState(defaultSearch)
 
   useEffect(() => {
-    if (defaultSearch && search === "") setSearch(defaultSearch)
+    if (defaultSearch && search === undefined) setSearch(defaultSearch)
   }, [defaultSearch, search])
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const App: FC = () => {
           Welcome, John
         </h1>
       )}
-      <SearchMusic query={search} />
+      <SearchMusic query={search ?? ""} />
     </div>
   )
 }
