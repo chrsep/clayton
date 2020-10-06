@@ -5,54 +5,53 @@ let creationCount = 0
 let c: Redis.Redis
 
 const getClient = () => {
+  if (c) {
+    reuseCount += 1
+    console.log("redis: reusing redis client")
+  } else {
+    creationCount += 1
+    console.log("redis: new redis instance created")
+    c = new Redis({
+      host: process.env.REDIS_HOST,
+      password: process.env.REDIS_PASSWORD
+        ? process.env.REDIS_PASSWORD
+        : undefined,
+      port: parseInt(process.env.REDIS_PORT ?? "6379", 10),
+      reconnectOnError(error: Error) {
+        console.log(error)
+        return true
+      },
+    })
+
+    c.on("connect", () => {
+      console.log("redis: redis connection established")
+    })
+
+    c.on("ready", () => {
+      console.log("redis: is ready")
+    })
+
+    c.on("error", () => {
+      console.log("redis: error")
+    })
+
+    c.on("close", () => {
+      console.log("redis: connection closed")
+    })
+
+    c.on("reconnecting", () => {
+      console.log("redis: reconnecting")
+    })
+
+    c.on("end", () => {
+      console.log("redis: connection ended")
+    })
+  }
+
   console.log("==========get redis client============")
   console.log(`has been reused ${reuseCount} times`)
   console.log(`has been created ${creationCount} times`)
   console.log("======================================")
-
-  if (c) {
-    reuseCount += 1
-    console.log("redis: reusing redis client")
-    return c
-  }
-
-  creationCount += 1
-  console.log("redis: new redis instance created")
-  c = new Redis({
-    host: process.env.REDIS_HOST,
-    password: process.env.REDIS_PASSWORD
-      ? process.env.REDIS_PASSWORD
-      : undefined,
-    port: parseInt(process.env.REDIS_PORT ?? "6379", 10),
-    reconnectOnError(error: Error) {
-      console.log(error)
-      return true
-    },
-  })
-
-  c.on("connect", () => {
-    console.log("redis: redis connection established")
-  })
-
-  c.on("ready", () => {
-    console.log("redis: is ready")
-  })
-
-  c.on("error", () => {
-    console.log("redis: error")
-  })
-
-  c.on("close", () => {
-    console.log("redis: connection closed")
-  })
-
-  c.on("reconnecting", () => {
-    console.log("redis: reconnecting")
-  })
-
-  c.on("end", () => {
-    console.log("redis: connection ended")
-  })
 
   return c
 }
