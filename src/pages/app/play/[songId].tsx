@@ -225,44 +225,44 @@ const FeatureItem: FC<{ name: string; value: string | number }> = ({
   </p>
 )
 
-const retrievePageData = async (songId: string): Promise<Props> => {
-  let count = 0
-  let props: Props
-  try {
-    console.log(`play: fetching data`)
-    const result = await Promise.all([
-      getTrack(songId),
-      getAudioAnalysis(songId),
-      getAudioFeatures(songId),
-    ])
-
-    props = {
-      track: result[0],
-      audioAnalysis: result[1],
-      audioFeatures: result[2],
-      lastUpdated: Date.now(),
-    }
-  } catch (e) {
-    console.log(`play: retry fetching data for the ${count} times`)
-    // Prevent infinite loop, only allows for 3x
-    count += 1
-    if (count > 3) {
-      console.log(e)
-      throw e
-    }
-
-    // Sleep
-    await new Promise((r) => setTimeout(r, Math.random() * 1000))
-    props = await retrievePageData(songId)
-  }
-
-  return props
-}
-
 export const getStaticProps: GetStaticProps<
   Props,
   { songId: string }
 > = async ({ params }) => {
+  const retrievePageData = async (songId: string): Promise<Props> => {
+    let count = 0
+    let props: Props
+    try {
+      console.log(`play: fetching data`)
+      const result = await Promise.all([
+        getTrack(songId),
+        getAudioAnalysis(songId),
+        getAudioFeatures(songId),
+      ])
+
+      props = {
+        track: result[0],
+        audioAnalysis: result[1],
+        audioFeatures: result[2],
+        lastUpdated: Date.now(),
+      }
+    } catch (e) {
+      console.log(`play: retry fetching data for the ${count} times`)
+      // Prevent infinite loop, only allows for 3x
+      count += 1
+      if (count > 3) {
+        console.log(e)
+        throw e
+      }
+
+      // Sleep
+      await new Promise((r) => setTimeout(r, Math.random() * 1000))
+      props = await retrievePageData(songId)
+    }
+
+    return props
+  }
+
   const props = await retrievePageData(params?.songId ?? "")
 
   return {
