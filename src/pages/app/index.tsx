@@ -3,20 +3,40 @@ import React, {
   DetailedHTMLProps,
   FC,
   InputHTMLAttributes,
+  useEffect,
   useRef,
   useState,
 } from "react"
 import Head from "next/head"
 import { Svg } from "react-optimized-image"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import SearchIcon from "../../icons/search.svg"
 import useSearchTrack from "../../hooks/useSearchTrack"
 import CrossIcon from "../../icons/cross.svg"
 import Button from "../../components/Button/Button"
 import useDebounce from "../../hooks/useDebounce"
+import useQueryString from "../../hooks/useQueryString"
 
 const App: FC = () => {
-  const [search, setSearch] = useState("")
+  const router = useRouter()
+  const defaultSearch = useQueryString("search")
+  const [search, setSearch] = useState<string>(defaultSearch ?? "")
+
+  useEffect(() => {
+    if (defaultSearch) setSearch(defaultSearch)
+  }, [defaultSearch])
+
+  useEffect(() => {
+    router
+      .push({
+        pathname: "/app",
+        query: { search },
+      })
+      .catch((e) => {
+        throw e
+      })
+  }, [search])
 
   return (
     <div className="pt-16">
