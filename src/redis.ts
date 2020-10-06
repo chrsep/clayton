@@ -2,7 +2,7 @@ import Redis from "ioredis"
 
 let c: Redis.Redis
 const MAX_CONNECTIONS = 30
-const CONNECTION_THRESHOLD = 90 // %
+const CONNECTION_THRESHOLD = 80 // %
 
 const getRedis = () => {
   if (!c) {
@@ -13,6 +13,10 @@ const getRedis = () => {
         ? process.env.REDIS_PASSWORD
         : undefined,
       port: parseInt(process.env.REDIS_PORT ?? "6379", 10),
+      reconnectOnError(error: Error) {
+        console.log(error)
+        return true
+      },
     })
 
     c.on("connect", () => {
