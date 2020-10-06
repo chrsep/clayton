@@ -28,14 +28,16 @@ const App: FC = () => {
   }, [defaultSearch])
 
   useEffect(() => {
-    router
-      .push({
-        pathname: "/app",
-        query: { search },
-      })
-      .catch((e) => {
-        throw e
-      })
+    if (search) {
+      router
+        .push({
+          pathname: "/app",
+          query: { search },
+        })
+        .catch((e) => {
+          throw e
+        })
+    }
   }, [search])
 
   return (

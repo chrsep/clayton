@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps } from "next"
 import Svg from "react-optimized-image/lib/components/Svg"
 import Link from "next/link"
 import dayjs, { Dayjs } from "dayjs"
+import { useRouter } from "next/router"
 import {
   getAudioAnalysis,
   getAudioFeatures,
@@ -13,7 +14,7 @@ import {
   SpotifyApiGetTrackResponse,
 } from "../../../spotify/api"
 import Button from "../../../components/Button/Button"
-import CrossIcon from "../../../icons/cross.svg"
+import ChevronIcon from "../../../icons/chevron_left.svg"
 import useGetAccessToken from "../../../hooks/useGetAccessToken"
 import usePlaySpotifyUri from "../../../hooks/usePlaySpotifyUri"
 import { SpotifyPlayerContext } from "../../../components/SpotifyPlayerProvider/SpotifyPlayerProvider"
@@ -64,6 +65,7 @@ const Play: FC<Props> = ({
   audioFeatures,
   lastUpdated,
 }) => {
+  const router = useRouter()
   return (
     <div>
       <Head>
@@ -85,13 +87,12 @@ const Play: FC<Props> = ({
       </Head>
       <div className="p-3 max-w-6xl mx-auto">
         <div className="flex items-center">
-          <Link href="/app">
-            <a className="">
-              <Button className="text-sm px-2 bg-black border-2">
-                <Svg src={CrossIcon} className="w-6 h-6" />
-              </Button>
-            </a>
-          </Link>
+          <Button
+            className="text-sm px-2 bg-black border-2"
+            onClick={() => router.back()}
+          >
+            <Svg src={ChevronIcon} className="w-6 h-6" />
+          </Button>
           <h1 className="ml-3 text-center font-bold">Track</h1>
         </div>
       </div>
