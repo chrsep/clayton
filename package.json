@@ -17,7 +17,7 @@
   "dependencies": {
     "@prefresh/next": "1.2.4",
     "@sentry/node": "5.25.0",
-    "@types/ioredis": "4.17.4",
+    "@types/ioredis": "4.17.5",
     "@types/uuid": "8.3.0",
     "dayjs": "1.9.1",
     "ioredis": "4.17.3",
