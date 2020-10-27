@@ -49,7 +49,7 @@
     "@typescript-eslint/parser": "4.6.0",
     "babel-loader": "8.1.0",
     "cypress": "5.5.0",
-    "eslint": "7.12.0",
+    "eslint": "7.12.1",
     "eslint-config-airbnb-typescript": "12.0.0",
     "eslint-config-prettier": "6.14.0",
     "eslint-import-resolver-node": "0.3.4",
