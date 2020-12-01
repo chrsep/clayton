@@ -21,7 +21,7 @@
     "@types/uuid": "8.3.0",
     "dayjs": "1.9.6",
     "ioredis": "4.19.2",
-    "next": "10.0.2",
+    "next": "10.0.3",
     "next-compose-plugins": "2.2.1",
     "next-optimized-images": "3.0.0-canary.10",
     "nookies": "2.5.0",
