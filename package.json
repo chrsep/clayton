@@ -38,7 +38,7 @@
     "uuid": "8.3.1"
   },
   "devDependencies": {
-    "@babel/core": "7.14.0",
+    "@babel/core": "7.14.3",
     "@storybook/addon-actions": "6.1.2",
     "@storybook/addon-essentials": "6.1.2",
     "@storybook/addon-links": "6.1.2",
