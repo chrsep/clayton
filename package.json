@@ -24,7 +24,7 @@
     "next": "10.0.6",
     "next-compose-plugins": "2.2.1",
     "next-optimized-images": "3.0.0-canary.10",
-    "nookies": "2.5.0",
+    "nookies": "2.5.2",
     "postcss-preset-env": "6.7.0",
     "preact": "10.5.7",
     "preact-render-to-string": "5.1.12",
