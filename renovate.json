@@ -4,6 +4,7 @@
     "schedule:monthly"
   ],
   "automerge": true,
+  "automergeType": "branch",
   "packageRules": [
     {
       "packagePatterns": [
