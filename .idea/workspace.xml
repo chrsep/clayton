@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7f93d86f-98b6-4332-a18d-e653cd448a25" name="Default Changelist" comment="fix search edge cases.">
+      <change beforePath="$PROJECT_DIR$/.babelrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/static-analysis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.storybook/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.storybook/preview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_templates/component/new/component.ejs.t" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_templates/component/new/stories.ejs.t" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_templates/generator/help/index.ejs.t" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_templates/generator/new/hello.ejs.t" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_templates/generator/with-prompt/hello.ejs.t" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_templates/generator/with-prompt/prompt.ejs.t" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/fixtures/example.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/actions.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/plugins/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/support/commands.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/support/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/next-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vercel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/renovate.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apiHelpers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Button/Button.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Button/Button.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SpotifyPlayerProvider/SpotifyPlayerProvider.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SpotifyPlayerProvider/SpotifyPlayerProvider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/global.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useDebounce.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useGetAccessToken.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/usePlaySpotifyUri.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useQueryString.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useSearchTrack.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/alarm_clock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/archive.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/arrow_down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/arrow_down_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/arrow_left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/arrow_left_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/arrow_right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/arrow_right_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/arrow_up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/arrow_up_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/backward.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/bag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/battery_75.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/battery_charging.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/battery_empty.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/battery_full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/battery_half.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/battery_low.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/bell.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/bell_disabled.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/bell_ringing.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/bell_snooze.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/bookmark_book.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/branch.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/browser.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/browser_alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/button_add.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/button_minus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/calendar.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/calendar_add.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/calendar_date.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/calendar_day.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/calendar_days.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/calendar_last_day.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/calendar_month.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/calendar_move.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/calendar_remove.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/calendar_split.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/calendar_week.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/capture.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/cart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chain.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chat_add.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/check.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/check_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_down_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_down_double.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_left_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_left_double.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_right_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_right_double.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_up_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/chevron_up_double.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/code.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/coffee.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/coin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/coins.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/compass.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/component_add.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/contract.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/create.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/credit_card.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/cross.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/cross_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/crosshair.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/cylinder.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/database.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/diamond.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/disc.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/display.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/display_alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/document.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/download.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/download_alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/drag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/drag_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/enter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/enter_alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/exit_left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/exit_right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/expand.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/expand_height.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/expand_width.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/face_delighted.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/face_happy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/face_neutral.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/face_sad.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/filter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/filter_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/fingerprint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/folder_add.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/folder_closed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/folder_minus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/folder_open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/forward.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/fullscreen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/funnel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/gauge.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/github.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/graph_bar.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/graph_box.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/grid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/grid_small.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/heart_rate.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/height.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/hierarchy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/inbox.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/inbox_alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/info_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/iphone_landscape.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/iphone_portrait.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/jump_backward.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/jump_down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/jump_forward.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/jump_up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/laptop.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/lightning.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/lightning_alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/link.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/link_broken.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/list.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/list_add.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/list_numbered.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/location.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/lock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/lock_open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/mail.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/mail_add.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/mail_delete.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/mail_minus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/mail_new.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/mail_open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/mail_remove.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/marquee.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/maximise.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/message.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/message_writing.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/microphone.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/microphone_disabled.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/microphone_muted.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/minimise.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/minus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/minus_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/move.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/newspaper.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/paper.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/paper_folded.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/paperclip.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/pen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/phone_landscape.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/phone_portrait.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/plus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/plus_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/printer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/projector.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/push_left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/push_right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/question_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/record.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/redo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/refresh.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/replicate.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/replicate_alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/reset.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/reset_alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/reuse.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/reverse.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/reverse_alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/revert.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/search.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/server.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/share.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/shuffle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/side_menu.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/sliders.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/sort.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/sort_alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/speech_bubble.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/speech_typing.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/spotify.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/star.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/support.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/tag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/tags.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/target.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/thread.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/thumbs_down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/thumbs_up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/ticket.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/toggle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/trash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/unarchive.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/undo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/upload.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/upload_alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/user.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/user_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/user_male.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/user_male_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/users.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/venn.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/version.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/versions.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/volume_0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/volume_add.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/volume_disabled.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/volume_high.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/volume_low.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/volume_minus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/volume_muted.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/warning_circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/warning_hex.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/warning_triangle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/width.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/write.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/zoom_cancel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/zoom_in.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/zoom_out.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/icons/zoom_reset.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/auth/access-token.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/auth/callback.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/auth/login.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/player/play.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/search/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/app/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/app/track/[songId].tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redis.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spotify/api.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spotify/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spotify/model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spotify/utils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/Introduction.stories.mdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/assets/code-brackets.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/assets/colors.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/assets/comments.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/assets/direction.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/assets/flow.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/assets/plugin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/assets/repo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/assets/stackalt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="DockerExecCommand">
+    <ExecCommand>
+      <option name="command" value="sh" />
+      <option name="imageId" value="sha256:84c5f6e03bf04e139705ceb2612ae274aad94f8dcf8cc630fbf6d91975f2e1c9" />
+    </ExecCommand>
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="master" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="gr91h2cl" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="1iJvKUMz4pBGRt9P5StUjY6rlom" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "/home/chris/Projects/clayton",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/api" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/icons" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/_templates/component/new" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/spotify" />
+      <recent name="$PROJECT_DIR$/docker/redis" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="yarn run storybook" />
+      <command value="open good-enough" />
+      <command value="open vor-infra" />
+      <command value="Run infra" />
+      <command value="yarn run dev" />
+      <command value="open nemesis" />
+      <command value="open ~/intSrc/obserfy" />
+      <command value="open grayson" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Docker.Run infra">
+    <configuration name="Run infra" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="commandLineOptions" value="--build" />
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="storybook" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="storybook" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.Run infra" />
+      <item itemvalue="npm.dev" />
+      <item itemvalue="npm.storybook" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.storybook" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7f93d86f-98b6-4332-a18d-e653cd448a25" name="Default Changelist" comment="" />
+      <created>1601638445941</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601638445941</updated>
+      <workItem from="1601638447100" duration="1686000" />
+      <workItem from="1601709936411" duration="510000" />
+      <workItem from="1601710459471" duration="47904000" />
+      <workItem from="1601799735095" duration="38824000" />
+      <workItem from="1601873371006" duration="802000" />
+      <workItem from="1601918932098" duration="28548000" />
+      <workItem from="1601984952642" duration="94000" />
+      <workItem from="1601985152967" duration="8696000" />
+      <workItem from="1602052593226" duration="393000" />
+      <workItem from="1602053037822" duration="122000" />
+      <workItem from="1602061810777" duration="684000" />
+      <workItem from="1602304806822" duration="565000" />
+      <workItem from="1602305898198" duration="59000" />
+      <workItem from="1602338285759" duration="1196000" />
+      <workItem from="1602345041688" duration="5111000" />
+      <workItem from="1602382680401" duration="11000" />
+      <workItem from="1602405309639" duration="1287000" />
+      <workItem from="1602409336986" duration="41000" />
+      <workItem from="1602659033385" duration="6414000" />
+      <workItem from="1602930873317" duration="1725000" />
+      <workItem from="1604683076657" duration="16000" />
+      <workItem from="1643793693581" duration="99000" />
+      <workItem from="1643793819716" duration="696000" />
+    </task>
+    <task id="LOCAL-00028" summary="fix typo.">
+      <created>1601751555615</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1601751555615</updated>
+    </task>
+    <task id="LOCAL-00029" summary="change search bar color.">
+      <created>1601751628194</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1601751628194</updated>
+    </task>
+    <task id="LOCAL-00030" summary="improve typing.">
+      <created>1601786504752</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1601786504752</updated>
+    </task>
+    <task id="LOCAL-00031" summary="move some types around.">
+      <created>1601787979779</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1601787979779</updated>
+    </task>
+    <task id="LOCAL-00032" summary="some refactor.">
+      <created>1601790683674</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1601790683674</updated>
+    </task>
+    <task id="LOCAL-00033" summary="add refresh token mechanism.">
+      <created>1601794617792</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1601794617792</updated>
+    </task>
+    <task id="LOCAL-00034" summary="make totally functioning search">
+      <created>1601806031282</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1601806031282</updated>
+    </task>
+    <task id="LOCAL-00035" summary="add error message.">
+      <created>1601806979439</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1601806979439</updated>
+    </task>
+    <task id="LOCAL-00036" summary="add play song page. fix redirect script misbehaving after client side navigation.">
+      <created>1601808302871</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1601808302871</updated>
+    </task>
+    <task id="LOCAL-00037" summary="try catch all of the authorization flow.">
+      <created>1601810357636</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1601810357636</updated>
+    </task>
+    <task id="LOCAL-00038" summary="use incremental static regeneration.">
+      <created>1601814014057</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1601814014057</updated>
+    </task>
+    <task id="LOCAL-00039" summary="refactor auth.ts">
+      <created>1601819522011</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1601819522011</updated>
+    </task>
+    <task id="LOCAL-00040" summary="some more refactor.">
+      <created>1601820677185</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1601820677185</updated>
+    </task>
+    <task id="LOCAL-00041" summary="refactor stuffs.">
+      <created>1601823344768</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1601823344768</updated>
+    </task>
+    <task id="LOCAL-00042" summary="add functioning get tracks endpoint.">
+      <created>1601824673903</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1601824673903</updated>
+    </task>
+    <task id="LOCAL-00043" summary="add proper typing to get tracks api.">
+      <created>1601824980835</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1601824980835</updated>
+    </task>
+    <task id="LOCAL-00044" summary="show track image name and artist.">
+      <created>1601827632878</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1601827632878</updated>
+    </task>
+    <task id="LOCAL-00045" summary="debounce search bar.">
+      <created>1601828446410</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1601828446410</updated>
+    </task>
+    <task id="LOCAL-00046" summary="show some data for tracks.">
+      <created>1601833743001</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1601833743001</updated>
+    </task>
+    <task id="LOCAL-00047" summary="add play button.">
+      <created>1601834363772</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1601834363772</updated>
+    </task>
+    <task id="LOCAL-00048" summary="change bg color">
+      <created>1601834412281</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1601834412281</updated>
+    </task>
+    <task id="LOCAL-00049" summary="add functional playback.">
+      <created>1601842548162</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1601842548162</updated>
+    </task>
+    <task id="LOCAL-00050" summary="fix overlapping playback.">
+      <created>1601842904877</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1601842904877</updated>
+    </task>
+    <task id="LOCAL-00051" summary="replace node-redis with ioredis. try fixing too much connection problem.">
+      <created>1601920166504</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1601920166504</updated>
+    </task>
+    <task id="LOCAL-00052" summary="add redis logging.">
+      <created>1601921175751</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1601921175751</updated>
+    </task>
+    <task id="LOCAL-00053" summary="revert to using global redis instance.">
+      <created>1601922426847</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1601922426847</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Add a little log.">
+      <created>1601926150559</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1601926150559</updated>
+    </task>
+    <task id="LOCAL-00055" summary="add some more logging.">
+      <created>1601927457643</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1601927457643</updated>
+    </task>
+    <task id="LOCAL-00056" summary="add some more logging.">
+      <created>1601928019122</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1601928019122</updated>
+    </task>
+    <task id="LOCAL-00057" summary="add even more logging">
+      <created>1601928194606</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1601928194606</updated>
+    </task>
+    <task id="LOCAL-00058" summary="add even more logging">
+      <created>1601928240136</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1601928240136</updated>
+    </task>
+    <task id="LOCAL-00059" summary="add some failed retry.">
+      <created>1601961563827</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1601961563827</updated>
+    </task>
+    <task id="LOCAL-00060" summary="retry connection on error.">
+      <created>1601962109555</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1601962109555</updated>
+    </task>
+    <task id="LOCAL-00061" summary="retry connection on error.">
+      <created>1601962127638</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1601962127638</updated>
+    </task>
+    <task id="LOCAL-00062" summary="add some more logging.">
+      <created>1601962331895</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1601962331895</updated>
+    </task>
+    <task id="LOCAL-00063" summary="fix bundle.">
+      <created>1601962892403</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1601962892403</updated>
+    </task>
+    <task id="LOCAL-00064" summary="add even more logging.">
+      <created>1601969258769</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1601969258769</updated>
+    </task>
+    <task id="LOCAL-00065" summary="improve logging structure.">
+      <created>1601969598851</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1601969598851</updated>
+    </task>
+    <task id="LOCAL-00066" summary="add cleanup function.">
+      <created>1601975800575</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1601975800575</updated>
+    </task>
+    <task id="LOCAL-00067" summary="reconnect on error.">
+      <created>1601976531387</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1601976531387</updated>
+    </task>
+    <task id="LOCAL-00068" summary="don't use redis for app token since we only need one.">
+      <created>1601977298037</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1601977298037</updated>
+    </task>
+    <task id="LOCAL-00069" summary="refactor a little.">
+      <created>1601977417717</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1601977417717</updated>
+    </task>
+    <task id="LOCAL-00070" summary="speed up search">
+      <created>1601978563288</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1601978563288</updated>
+    </task>
+    <task id="LOCAL-00071" summary="use query string for each persistent and stuff.">
+      <created>1601979135534</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1601979135535</updated>
+    </task>
+    <task id="LOCAL-00072" summary="use back button not close.">
+      <created>1601979363527</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1601979363527</updated>
+    </task>
+    <task id="LOCAL-00073" summary="use link again, but keep the query string around.">
+      <created>1601979651553</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1601979651555</updated>
+    </task>
+    <task id="LOCAL-00074" summary="fix sesarch bar can't type.">
+      <created>1601979939588</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1601979939588</updated>
+    </task>
+    <task id="LOCAL-00075" summary="fix search bar cannot be emptied.">
+      <created>1601980168091</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1601980168091</updated>
+    </task>
+    <task id="LOCAL-00076" summary="fix search edge cases.">
+      <created>1601985628326</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1601985628326</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add functional playback." />
+    <MESSAGE value="fix overlapping playback." />
+    <MESSAGE value="replace node-redis with ioredis. try fixing too much connection problem." />
+    <MESSAGE value="add redis logging." />
+    <MESSAGE value="revert to using global redis instance." />
+    <MESSAGE value="Add a little log." />
+    <MESSAGE value="add even more logging" />
+    <MESSAGE value="add some failed retry." />
+    <MESSAGE value="retry connection on error." />
+    <MESSAGE value="add some more logging." />
+    <MESSAGE value="fix bundle." />
+    <MESSAGE value="add even more logging." />
+    <MESSAGE value="improve logging structure." />
+    <MESSAGE value="add cleanup function." />
+    <MESSAGE value="reconnect on error." />
+    <MESSAGE value="don't use redis for app token." />
+    <MESSAGE value="don't use redis for app token since we only need one." />
+    <MESSAGE value="refactor a little." />
+    <MESSAGE value="speed up search" />
+    <MESSAGE value="use query string for each persistent and stuff." />
+    <MESSAGE value="use back button not close." />
+    <MESSAGE value="use link again, but keep the query string around." />
+    <MESSAGE value="fix sesarch bar can't type." />
+    <MESSAGE value="fix search bar cannot be emptied." />
+    <MESSAGE value="fix search edge cases." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix search edge cases." />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>
