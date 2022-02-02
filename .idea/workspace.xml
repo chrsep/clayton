@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f93d86f-98b6-4332-a18d-e653cd448a25" name="Default Changelist" comment="fix adapter.">
+    <list default="true" id="7f93d86f-98b6-4332-a18d-e653cd448a25" name="Default Changelist" comment="add tailwind and stuffs.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,14 +202,7 @@
       <workItem from="1604683076657" duration="16000" />
       <workItem from="1643793693581" duration="99000" />
       <workItem from="1643793819716" duration="1543000" />
-      <workItem from="1643795962551" duration="354000" />
-    </task>
-    <task id="LOCAL-00031" summary="move some types around.">
-      <created>1601787979779</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1601787979779</updated>
+      <workItem from="1643795962551" duration="1440000" />
     </task>
     <task id="LOCAL-00032" summary="some refactor.">
       <created>1601790683674</created>
@@ -545,7 +540,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643796143202</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="add tailwind and stuffs.">
+      <created>1643796366574</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1643796366574</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -563,7 +565,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="replace node-redis with ioredis. try fixing too much connection problem." />
     <MESSAGE value="add redis logging." />
     <MESSAGE value="revert to using global redis instance." />
     <MESSAGE value="Add a little log." />
@@ -588,7 +589,8 @@
     <MESSAGE value="fix search edge cases." />
     <MESSAGE value="move to svelte kit." />
     <MESSAGE value="fix adapter." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix adapter." />
+    <MESSAGE value="add tailwind and stuffs." />
+    <option name="LAST_COMMIT_MESSAGE" value="add tailwind and stuffs." />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
