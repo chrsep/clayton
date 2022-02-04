@@ -2,22 +2,21 @@
   import type { Load } from "@sveltejs/kit"
 
   export const load: Load = async ({ params, fetch }) => {
-    const test = await process.env.KV_STORE.get("test")
+    const response = await fetch("/api/test.json")
 
     return {
       props: {
-        test,
+        test: await response.json(),
       },
     }
   }
-
 </script>
 
 <script lang="ts">
-  export let test = "asd";
+  export let test
 </script>
 
-<h1>Welcome to {test}</h1>
+<h1>Welcome to {test.test}</h1>
 <p>
   Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
 </p>
