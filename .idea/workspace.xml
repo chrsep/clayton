@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f93d86f-98b6-4332-a18d-e653cd448a25" name="Default Changelist" comment="try kv store.">
-      <change afterPath="$PROJECT_DIR$/src/routes/api/test.json.ts" afterDir="false" />
+    <list default="true" id="7f93d86f-98b6-4332-a18d-e653cd448a25" name="Default Changelist" comment="try svelte kv store.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/api/test.json.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/api/test.json.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,14 +204,7 @@
       <workItem from="1643795962551" duration="2854000" />
       <workItem from="1643861623465" duration="598000" />
       <workItem from="1643867845360" duration="4059000" />
-      <workItem from="1643969873712" duration="4090000" />
-    </task>
-    <task id="LOCAL-00034" summary="make totally functioning search">
-      <created>1601806031282</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1601806031282</updated>
+      <workItem from="1643969873712" duration="4973000" />
     </task>
     <task id="LOCAL-00035" summary="add error message.">
       <created>1601806979439</created>
@@ -550,7 +542,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643972036935</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="try svelte kv store.">
+      <created>1643973979806</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1643973979806</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +567,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add a little log." />
     <MESSAGE value="add even more logging" />
     <MESSAGE value="add some failed retry." />
     <MESSAGE value="retry connection on error." />
@@ -593,7 +591,8 @@
     <MESSAGE value="add tailwind and stuffs." />
     <MESSAGE value="add prettier plug" />
     <MESSAGE value="try kv store." />
-    <option name="LAST_COMMIT_MESSAGE" value="try kv store." />
+    <MESSAGE value="try svelte kv store." />
+    <option name="LAST_COMMIT_MESSAGE" value="try svelte kv store." />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
