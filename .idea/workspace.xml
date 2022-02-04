@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f93d86f-98b6-4332-a18d-e653cd448a25" name="Default Changelist" comment="try svelte kv store.">
+    <list default="true" id="7f93d86f-98b6-4332-a18d-e653cd448a25" name="Default Changelist" comment="test svelte kit cloudflare.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/api/test.json.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/api/test.json.ts" afterDir="false" />
     </list>
@@ -204,14 +204,7 @@
       <workItem from="1643795962551" duration="2854000" />
       <workItem from="1643861623465" duration="598000" />
       <workItem from="1643867845360" duration="4059000" />
-      <workItem from="1643969873712" duration="4973000" />
-    </task>
-    <task id="LOCAL-00035" summary="add error message.">
-      <created>1601806979439</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1601806979439</updated>
+      <workItem from="1643969873712" duration="6007000" />
     </task>
     <task id="LOCAL-00036" summary="add play song page. fix redirect script misbehaving after client side navigation.">
       <created>1601808302871</created>
@@ -549,7 +542,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643973979806</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="test svelte kit cloudflare.">
+      <created>1643974859955</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1643974859955</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,7 +567,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add even more logging" />
     <MESSAGE value="add some failed retry." />
     <MESSAGE value="retry connection on error." />
     <MESSAGE value="add some more logging." />
@@ -592,7 +591,8 @@
     <MESSAGE value="add prettier plug" />
     <MESSAGE value="try kv store." />
     <MESSAGE value="try svelte kv store." />
-    <option name="LAST_COMMIT_MESSAGE" value="try svelte kv store." />
+    <MESSAGE value="test svelte kit cloudflare." />
+    <option name="LAST_COMMIT_MESSAGE" value="test svelte kit cloudflare." />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
