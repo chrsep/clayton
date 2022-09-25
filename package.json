@@ -13,7 +13,7 @@
 	},
 	"devDependencies": {
 		"@miniflare/kv": "^2.2.0",
-		"@miniflare/storage-memory": "^2.2.0",
+		"@miniflare/storage-memory": "2.9.0",
 		"@sveltejs/adapter-cloudflare": "^1.0.0-next.2",
 		"@sveltejs/kit": "next",
 		"@typescript-eslint/eslint-plugin": "^5.10.1",
